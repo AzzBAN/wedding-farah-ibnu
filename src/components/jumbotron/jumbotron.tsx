@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Jumbotron() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(32);
 
   useEffect(() => {
     const resizeHandler = () => {
