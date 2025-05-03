@@ -32,14 +32,14 @@ export default function Jumbotron() {
           <div className="flex h-full w-full justify-center gap-[2px]">
             {Array.from({ length: count }).map((_, idx) => {
               if (idx === 0 || idx === count - 1) {
-                return <Image key={idx} src="/images/jumbotron/papan_100.svg" alt="" width={0} height={0} style={{ width: "30px", height: "auto", objectFit: "contain", objectPosition: "top" }} />;
+                return <Image key={idx} src="/images/jumbotron/Papan_100.svg" alt="" width={0} height={0} style={{ width: "30px", height: "auto", objectFit: "contain", objectPosition: "top" }} />;
               } else if (idx === 1 || idx === count - 2) {
-                return <Image key={idx} src="/images/jumbotron/papan_80.svg" alt="" width={0} height={0} style={{ width: "30px", height: "auto", objectFit: "contain", objectPosition: "top" }} />;
+                return <Image key={idx} src="/images/jumbotron/Papan_80.svg" alt="" width={0} height={0} style={{ width: "30px", height: "auto", objectFit: "contain", objectPosition: "top" }} />;
               } else if (idx === 2 || idx === count - 3) {
-                return <Image key={idx} src="/images/jumbotron/papan_60.svg" alt="" width={0} height={0} style={{ width: "30px", height: "auto", objectFit: "contain", objectPosition: "top" }} />;
+                return <Image key={idx} src="/images/jumbotron/Papan_60.svg" alt="" width={0} height={0} style={{ width: "30px", height: "auto", objectFit: "contain", objectPosition: "top" }} />;
               }
 
-              return <Image key={idx} src="/images/jumbotron/papan_40.svg" alt="" width={0} height={0} style={{ width: "30px", height: "auto", objectFit: "contain", objectPosition: "top" }} />;
+              return <Image key={idx} src="/images/jumbotron/Papan_40.svg" alt="" width={0} height={0} style={{ width: "30px", height: "auto", objectFit: "contain", objectPosition: "top" }} />;
             })}
           </div>
         </div>
