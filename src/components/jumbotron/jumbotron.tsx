@@ -31,15 +31,33 @@ export default function Jumbotron() {
         <div ref={containerRef} className="absolute top-0 left-0 right-0 w-full h-1/7">
           <div className="flex h-full w-full justify-center gap-[2px]">
             {Array.from({ length: count }).map((_, idx) => {
-              if (idx === 0 || idx === count - 1) {
-                return <Image key={idx} src="/images/jumbotron/Papan_100.svg" alt="" width={0} height={0} style={{ width: "30px", height: "auto", objectFit: "contain", objectPosition: "top" }} />;
-              } else if (idx === 1 || idx === count - 2) {
-                return <Image key={idx} src="/images/jumbotron/Papan_80.svg" alt="" width={0} height={0} style={{ width: "30px", height: "auto", objectFit: "contain", objectPosition: "top" }} />;
-              } else if (idx === 2 || idx === count - 3) {
-                return <Image key={idx} src="/images/jumbotron/Papan_60.svg" alt="" width={0} height={0} style={{ width: "30px", height: "auto", objectFit: "contain", objectPosition: "top" }} />;
-              }
+              let src = "/images/jumbotron/Papan_40.svg";
+              if (idx === 0 || idx === count - 1) src = "/images/jumbotron/Papan_100.svg";
+              else if (idx === 1 || idx === count - 2) src = "/images/jumbotron/Papan_80.svg";
+              else if (idx === 2 || idx === count - 3) src = "/images/jumbotron/Papan_60.svg";
 
-              return <Image key={idx} src="/images/jumbotron/Papan_40.svg" alt="" width={0} height={0} style={{ width: "30px", height: "auto", objectFit: "contain", objectPosition: "top" }} />;
+              // Calculate delay from outside in
+              const maxDistance = Math.floor(count / 2);
+              const distanceFromEdge = Math.min(idx, count - 1 - idx);
+              const delay = distanceFromEdge * 50; // 100ms per step
+
+              return (
+                <Image
+                  className="animate-jump"
+                  key={idx}
+                  src={src}
+                  alt=""
+                  width={0}
+                  height={0}
+                  style={{
+                    width: "30px",
+                    height: "auto",
+                    objectFit: "contain",
+                    objectPosition: "top",
+                    animationDelay: `${delay}ms`,
+                  }}
+                />
+              );
             })}
           </div>
         </div>
@@ -62,7 +80,7 @@ export default function Jumbotron() {
 
         {/* flower */}
         <div
-          className=" absolute top-0 bottom-0 h-full"
+          className=" absolute top-0 bottom-0 h-full animate-breathe"
           style={{
             right: "calc(calc(-23px + 1vw) * 12)", // shift more as screen gets smaller
           }}
@@ -71,9 +89,10 @@ export default function Jumbotron() {
         </div>
 
         <div
-          className=" absolute top-0 bottom-0 h-full"
+          className=" absolute top-0 bottom-0 h-full animate-breathe"
           style={{
             left: "calc(calc(-23px + 1vw) * 12)", // shift more as screen gets smaller
+            animationDelay: "0.5s",
           }}
         >
           <Image src="/images/jumbotron/jumbo-flower.svg" alt="" width={0} height={0} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", transform: "scaleX(-1)" }} />
