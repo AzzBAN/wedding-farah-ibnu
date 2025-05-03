@@ -1,8 +1,51 @@
 @import "tailwindcss";
 
-:root {
+root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+/* src/app/globals.css */
+
+/* Generate font faces from public/fonts */
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/CormorantGaramond-Italic-VariableFont_wght.ttf") format("truetype");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/CormorantGaramond-VariableFont_wght.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Romanesco";
+  src: url("/fonts/Romanesco-regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Birthstone";
+  src: url("/fonts/Birthstone-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("/fonts/OpenSans-VariableFont_wdth,wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("/fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf") format("truetype");
+  font-style: italic;
+}
+
+@theme {
+  --font-cormorant: "Cormorant Garamond", serif;
+  --font-romanesco: "Romanesco", cursive;
+  --font-birthstone: "Birthstone", cursive;
+  --font-open-sans: "Open Sans", sans-serif;
 }
 
 @theme inline {
@@ -12,7 +55,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
