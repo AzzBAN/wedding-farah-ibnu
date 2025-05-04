@@ -113,7 +113,7 @@ export default function Jumbotron({ isOpening }: { isOpening?: boolean }) {
           <div className="flex flex-col justify-center h-full">
             <div className="flex justify-center mb-10">
               {/* <Image className="text-amber-500" src="/images/jumbotron/logo.svg" alt="" width={0} height={0} style={{ width: "100px", height: "100%", objectFit: "contain" }} /> */}
-              <Logo color="#C43C37" size={250} />
+              <Logo color="#C43C37" size={170} />
             </div>
             <div className="flex flex-col gap-2 mb-7">
               <div>
