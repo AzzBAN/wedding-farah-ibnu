@@ -48,6 +48,7 @@ root {
   --font-open-sans: "Open Sans", sans-serif;
   --animate-breathe: breathe 5s ease-in-out infinite;
   --animate-jump: jump-with-pause 15s ease-in-out infinite;
+  --animate-slide-up-fade: slide-up-fade 0.5s ease-in-out forwards;
 }
 
 @layer utilities {
@@ -61,25 +62,6 @@ root {
     }
     90% {
       transform: scaleX(1) scale(1);
-    }
-  }
-
-  @keyframes jump {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    30% {
-      transform: translateY(-10px); /* Jump up */
-    }
-    50% {
-      transform: translateY(0); /* Fall down */
-    }
-    70% {
-      transform: translateY(-5px); /* Mini bounce */
-    }
-    90% {
-      transform: translateY(0); /* Settle */
     }
   }
   @keyframes jump-with-pause {
@@ -106,6 +88,16 @@ root {
     }
     100% {
       transform: translateY(0); /* hold still from 20% to 100% */
+    }
+  }
+  @keyframes slide-up-fade {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-100%);
     }
   }
 }

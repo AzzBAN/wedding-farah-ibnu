@@ -1,10 +1,13 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
+import { Logo, Fani, And, Ibnu } from "../icon/jumbotron/Icons";
+import { useLayout } from "../LayoutContext";
 
-export default function Jumbotron() {
+export default function Jumbotron({ isOpening }: { isOpening?: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [count, setCount] = useState(32);
+  const { isOpen, setIsOpen } = useLayout();
 
   useEffect(() => {
     const resizeHandler = () => {
@@ -107,28 +110,43 @@ export default function Jumbotron() {
 
         {/* content */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2/3 max-w-[450px] h-3/5">
-          <div className="flex flex-col justify-center h-full gap-5">
-            <div className="w-full flex justify-start">
-              <Image src="/images/jumbotron/fani.svg" alt="" width={0} height={0} style={{ width: "250px", height: "100%", objectFit: "contain", objectPosition: "top" }} />
+          <div className="flex flex-col justify-center h-full">
+            <div className="flex justify-center mb-10">
+              {/* <Image className="text-amber-500" src="/images/jumbotron/logo.svg" alt="" width={0} height={0} style={{ width: "100px", height: "100%", objectFit: "contain" }} /> */}
+              <Logo color="#C43C37" size={250} />
             </div>
-            <div className="w-full flex justify-center">
-              <Image src="/images/jumbotron/and.svg" alt="" width={0} height={0} style={{ width: "50px", height: "100%", objectFit: "contain", objectPosition: "top" }} />
+            <div className="flex flex-col gap-2 mb-7">
+              <div>
+                <h1 className="text-center text-3xl font-bold text-[#C43C37]">
+                  <span className="text-lg font-cormorant">THE WEDDING OF</span>
+                </h1>
+              </div>
+              <div className="flex gap-3 justify-center items-center">
+                <Fani color="#C43C37" size={150} />
+                <And color="#C43C37" size={50} />
+                <Ibnu color="#C43C37" size={150} />
+              </div>
             </div>
-            <div className="w-full flex justify-end mb-10">
-              <Image src="/images/jumbotron/ibnu.svg" alt="" width={0} height={0} style={{ width: "250px", height: "100%", objectFit: "contain", objectPosition: "top" }} />
-            </div>
-            <div className="w-full flex flex-col font-bold text-[#C43C37] gap-2">
+            <div className="w-full flex flex-col font-bold text-[#C43C37] gap-2 mb-4">
               <div className="w-full flex justify-center text-center">
-                <span className="text-lg font-cormorant">
+                <span className="text-md font-cormorant">
                   Kepada Yth.
                   <br />
                   Bapak/Ibu/Saudara/I
                 </span>
               </div>
               <div className="w-full flex justify-center text-center">
-                <span className="text-4xl font-cormorant ">Aladin dan Partner</span>
+                <span className="text-2xl font-bold font-cormorant ">Aladin dan Partner</span>
               </div>
             </div>
+
+            {isOpening && (
+              <div className={`w-full flex justify-center ${isOpen ? "animate-slide-up-fade" : ""}`}>
+                <button className="bg-[#C43C37] hover:cursor-pointer py-3 px-10 rounded-full text-white font-cormorant" onClick={() => setIsOpen(true)}>
+                  Open Invitation
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
