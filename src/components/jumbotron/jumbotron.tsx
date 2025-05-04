@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import { createContext, useEffect, useRef, useState } from "react";
-import { Logo, Fani, And, Ibnu } from "../icon/jumbotron/Icons";
+import { createContext, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { Logo, Fani, And, Ibnu, Papan } from "../icon/jumbotron/Icons";
 import { useLayout } from "../LayoutContext";
 
 export default function Jumbotron({ isOpening }: { isOpening?: boolean }) {
@@ -9,17 +9,26 @@ export default function Jumbotron({ isOpening }: { isOpening?: boolean }) {
   const [count, setCount] = useState(32);
   const { isOpen, setIsOpen } = useLayout();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    let timeout: NodeJS.Timeout;
+
     const resizeHandler = () => {
-      const containerWidth = containerRef.current?.offsetWidth || 0;
-      const papanWidth = 32; // Set your image's actual width in px
-      setCount(Math.ceil(containerWidth / papanWidth));
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        const containerWidth = containerRef.current?.offsetWidth || 0;
+        const papanWidth = 32;
+        const newCount = Math.ceil(containerWidth / papanWidth);
+
+        if (newCount !== count) {
+          setCount(newCount);
+        }
+      }, 100); // Debounce duration (ms)
     };
 
-    resizeHandler(); // Initial calculation
+    resizeHandler(); // Initial run
     window.addEventListener("resize", resizeHandler);
     return () => window.removeEventListener("resize", resizeHandler);
-  }, []);
+  }, [count]);
   return (
     <div className="flex items-center justify-center h-full bg-[#FFE4D1] gap-3">
       <div
@@ -34,33 +43,20 @@ export default function Jumbotron({ isOpening }: { isOpening?: boolean }) {
         <div ref={containerRef} className="absolute top-0 left-0 right-0 w-full h-1/7">
           <div className="flex h-full w-full justify-center gap-[2px]">
             {Array.from({ length: count }).map((_, idx) => {
-              let src = "/images/jumbotron/Papan_40.svg";
-              if (idx === 0 || idx === count - 1) src = "/images/jumbotron/Papan_100.svg";
-              else if (idx === 1 || idx === count - 2) src = "/images/jumbotron/Papan_80.svg";
-              else if (idx === 2 || idx === count - 3) src = "/images/jumbotron/Papan_60.svg";
+              const isEdge = idx === 0 || idx === count - 1;
+              const isNearEdge = idx === 1 || idx === count - 2;
+              const isMidEdge = idx === 2 || idx === count - 3;
 
-              // Calculate delay from outside in
+              let viewbox = "0 600 300 1257"; // default (middle parts)
+              if (isMidEdge) viewbox = "0 400 300 1257";
+              else if (isNearEdge) viewbox = "0 200 300 1257";
+              else if (isEdge) viewbox = "0 0 300 1257";
+
               const maxDistance = Math.floor(count / 2);
               const distanceFromEdge = Math.min(idx, count - 1 - idx);
-              const delay = distanceFromEdge * 50; // 100ms per step
+              const delay = distanceFromEdge * 50;
 
-              return (
-                <Image
-                  className="animate-jump"
-                  key={idx}
-                  src={src}
-                  alt=""
-                  width={0}
-                  height={0}
-                  style={{
-                    width: "30px",
-                    height: "auto",
-                    objectFit: "contain",
-                    objectPosition: "top",
-                    animationDelay: `${delay}ms`,
-                  }}
-                />
-              );
+              return <Papan key={`papan-${idx}`} width={30} height={121} viewbox={viewbox} className="animate-jump" style={{ animationDelay: `${delay}ms` }} />;
             })}
           </div>
         </div>

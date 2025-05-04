@@ -69,4 +69,13 @@ const Ibnu: React.FC<LogoProps> = ({ size = 24, color = "#D6A527" }) => (
     />
   </svg>
 );
-export { Logo, Fani, And, Ibnu };
+
+const Papan: React.FC<LogoProps> = ({ size = 24, color = "#900", width = 30, height = 121, viewbox = "0 0 300 1257", className, style }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox={viewbox} fill="none" className={className} style={style}>
+    <path
+      d="M298.825 852.647L211.109 940.363L299.532 1028.79H220.59L277.48 1094.66L277.754 1094.98L277.49 1095.3L147.122 1255.99L146.725 1256.48L146.339 1255.98L22.0342 1095.29L21.7842 1094.97L22.0518 1094.66L78.9424 1028.79H0L88.4229 940.363L0.707031 852.647V0H298.825V852.647ZM149.767 743.296C114.604 743.296 86.0986 771.801 86.0986 806.964C86.0988 842.127 114.604 870.632 149.767 870.632C184.929 870.632 213.434 842.127 213.435 806.964C213.435 771.801 184.929 743.296 149.767 743.296Z"
+      fill={color}
+    />
+  </svg>
+);
+export { Logo, Fani, And, Ibnu, Papan };
