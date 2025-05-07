@@ -9,3 +9,13 @@ export interface LogoProps {
   className?: string;
   style?: CSSProperties;
 }
+
+export interface svgProps {
+  size?: number | string;
+  height?: number | string;
+  width?: number | string;
+  color?: string;
+  viewbox?: string;
+  className?: string;
+  style?: CSSProperties;
+}

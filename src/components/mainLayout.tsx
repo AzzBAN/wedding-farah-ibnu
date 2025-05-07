@@ -37,7 +37,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         </div>
 
         {/* Right side (Content) */}
-        <div className="w-full md:ml-[50%] lg:ml-[60%] overflow-y-auto bg-white px-4 py-6">{children}</div>
+        <div className="w-full md:ml-[50%] lg:ml-[60%] overflow-y-auto bg-white">{children}</div>
       </div>
     </div>
   );
