@@ -123,18 +123,20 @@ export default function Jumbotron({ isOpening }: { isOpening?: boolean }) {
                 <Ibnu color="#C43C37" size={150} />
               </div>
             </div>
-            <div className="w-full flex flex-col font-bold text-[#C43C37] gap-2 mb-4">
-              <div className="w-full flex justify-center text-center">
-                <span className="text-md font-cormorant">
-                  Kepada Yth.
-                  <br />
-                  Bapak/Ibu/Saudara/I
-                </span>
+            {isOpening && (
+              <div className="w-full flex flex-col font-bold text-[#C43C37] gap-2 mb-4">
+                <div className="w-full flex justify-center text-center">
+                  <span className="text-md font-cormorant">
+                    Kepada Yth.
+                    <br />
+                    Bapak/Ibu/Saudara/I
+                  </span>
+                </div>
+                <div className="w-full flex justify-center text-center">
+                  <span className="text-2xl font-bold font-cormorant ">Aladin dan Partner</span>
+                </div>
               </div>
-              <div className="w-full flex justify-center text-center">
-                <span className="text-2xl font-bold font-cormorant ">Aladin dan Partner</span>
-              </div>
-            </div>
+            )}
 
             {isOpening && (
               <div className={`w-full flex justify-center ${isOpen ? "animate-slide-up-fade" : ""}`}>

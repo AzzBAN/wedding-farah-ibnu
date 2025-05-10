@@ -33,7 +33,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       <div className="relative z-0 flex min-h-dvh">
         {/* Left side (Jumbotron static) - hidden on mobile */}
         <div className="hidden md:block md:w-1/2 lg:w-3/5 fixed h-full overflow-hidden">
-          <Jumbotron />
+          <Jumbotron isOpening={false} />
         </div>
 
         {/* Right side (Content) */}

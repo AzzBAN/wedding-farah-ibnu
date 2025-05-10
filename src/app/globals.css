@@ -49,6 +49,8 @@ root {
   --animate-breathe: breathe 5s ease-in-out infinite;
   --animate-jump: jump-with-pause 15s ease-in-out infinite;
   --animate-slide-up-fade: slide-up-fade 0.5s ease-in-out forwards;
+  --animate-swing-slow-right: swing-slow-right 5s ease-in-out infinite;
+  --animate-swing-slow-left: swing-slow-left 5s ease-in-out infinite;
 }
 
 @layer utilities {
@@ -98,6 +100,28 @@ root {
     100% {
       opacity: 0;
       transform: translateY(-100%);
+    }
+  }
+  @keyframes swing-slow-right {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(5deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  @keyframes swing-slow-left {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(0deg);
     }
   }
 }
