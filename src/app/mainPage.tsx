@@ -115,7 +115,7 @@ export default function MainPage() {
           {/* sub content #1 */}
           <img src="/images/content/content-2/Top.png" alt="TopCard" className="-mb-2" />
           <div
-            className="w-full relative px-10 max-sm:px-6 pt-7 flex flex-col gap-8 pb-7"
+            className="w-full relative px-10 max-sm:px-6 pt-7 flex flex-col justify-center items-center gap-8 pb-7"
             style={{
               backgroundImage: 'url("/images/content/content-2/MiddleCardBox.png")',
               backgroundSize: "contain",
@@ -138,9 +138,7 @@ export default function MainPage() {
               </span>
               <span className="text-center text-lg max-sm:text-[13px]">QS. Ar-Rum: 21</span>
             </div>
-            <div>
-              <Logo size={70} color="#990000" />
-            </div>
+            <Logo size={"auto"} width={40} color="#990000" />
 
             {/* sub content #2 */}
             <span className="text-center text-[#990000] font-serif mt-10">Dengan memohon rahmat dan ridho Aliah SWT kami mengundang Bapak/Ibu Saudara/i untuk menghadiri acara pernikahan putra-putri kami:</span>
