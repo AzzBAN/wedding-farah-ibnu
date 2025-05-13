@@ -1,4 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 @import "tailwindcss";
+@import "tailwindcss/preflight.css" layer(base);
 
 root {
   --background: #ffffff;
@@ -41,11 +43,18 @@ root {
   font-style: italic;
 }
 
+@font-face {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  src: url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+}
+
 @theme {
   --font-cormorant: "Cormorant Garamond", serif;
   --font-romanesco: "Romanesco", cursive;
   --font-birthstone: "Birthstone", cursive;
   --font-open-sans: "Open Sans", sans-serif;
+  --font-quicksand: "Quicksand", sans-serif;
   --animate-breathe: breathe 5s ease-in-out infinite;
   --animate-jump: jump-with-pause 15s ease-in-out infinite;
   --animate-slide-up-fade: slide-up-fade 0.5s ease-in-out forwards;

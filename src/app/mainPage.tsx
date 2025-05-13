@@ -1,8 +1,9 @@
 "use client";
 // import { BottomCardBox, MiddleCardBox, TopCardBox } from "@/components/icon/content-2/svg";
-import { Background, Background2, FlowerBottom, FlowerFill, FlowerStroke, Rope } from "@/components/icon/content/svg";
+import { Background, Background2, FlowerBottom, FlowerFill, FlowerStroke, Rope, SaveADate } from "@/components/icon/content/svg";
 import { And, Fani, Ibnu, Logo } from "@/components/icon/jumbotron/Icons";
 import MainLayout from "@/components/mainLayout";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -50,6 +51,59 @@ export default function MainPage() {
     return () => window.removeEventListener("resize", updateAspectRatio);
   }, []);
 
+  const targetDate = "2025-06-28T08:00:00";
+  const [timeLeft, setTimeLeft] = useState({
+    days: "00",
+    hours: "00",
+    minutes: "00",
+    seconds: "00",
+  });
+
+  // Triggered number state for animation
+  const [animatedTime, setAnimatedTime] = useState(timeLeft);
+
+  useEffect(() => {
+    const countdown = () => {
+      const now = new Date().getTime();
+      const distance = new Date(targetDate).getTime() - now;
+
+      if (distance <= 0) {
+        setTimeLeft({ days: "00", hours: "00", minutes: "00", seconds: "00" });
+        return;
+      }
+
+      const days = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, "0");
+      const hours = String(Math.floor((distance / (1000 * 60 * 60)) % 24)).padStart(2, "0");
+      const minutes = String(Math.floor((distance / (1000 * 60)) % 60)).padStart(2, "0");
+      const seconds = String(Math.floor((distance / 1000) % 60)).padStart(2, "0");
+
+      const newTime = { days, hours, minutes, seconds };
+      setTimeLeft(newTime);
+    };
+
+    const interval = setInterval(countdown, 1000);
+    return () => clearInterval(interval);
+  }, [targetDate]);
+
+  const renderAnimatedNumber = (value: any, key: any) => (
+    <AnimatePresence mode="popLayout" initial={false}>
+      <motion.span
+        key={value}
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 20, opacity: 0 }}
+        transition={{
+          type: "spring",
+          stiffness: 300, // controls the speed (higher = faster)
+          damping: 15, // controls the bounciness (lower = more bounce)
+        }}
+        className="text-[7vw] md:text-[5vw] lg:text-[3vw] leading-none absolute"
+      >
+        {value}
+      </motion.span>
+    </AnimatePresence>
+  );
+
   return (
     <MainLayout>
       <div className="w-full overflow-x-hidden min-h-screen">
@@ -85,14 +139,14 @@ export default function MainPage() {
                     </div>
                     <div className="w-full flex flex-col font-bold text-[#D6A527] gap-2 mb-4">
                       <div className="w-full flex justify-center text-center">
-                        <span className="text-sm font-cormorant">
+                        <span className="text-sm font-quicksand">
                           Kepada Yth.
                           <br />
                           Bapak/Ibu/Saudara/I
                         </span>
                       </div>
                       <div className="w-full flex justify-center text-center">
-                        <span className="text-2xl font-bold font-cormorant ">Aladin dan Partner</span>
+                        <span className="text-2xl font-bold font-quicksand ">Aladin dan Partner</span>
                       </div>
                     </div>
                   </div>
@@ -131,18 +185,20 @@ export default function MainPage() {
             <div className="w-[50%] py-3 mx-auto z-10">
               <Image src={"/images/content/content-2/bismillah.png"} alt="Basmallah" height={207} width={1020} />
             </div>
-            <div className="flex flex-col justify-center gap-4 text-[#990000] font-serif text-xs max-sm:text-[11px] z-10">
+            <div className="flex flex-col justify-center gap-4 text-[#990000] font-quicksand font-bold text-xs max-sm:text-[11px] z-10">
               <span className="text-center text-shadow-sm text-shadow-amber-100">
                 Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang.
                 Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
               </span>
               <span className="text-center text-lg max-sm:text-[13px]">QS. Ar-Rum: 21</span>
             </div>
-            <Logo size={"auto"} width={40} color="#990000" />
+            <Logo size={"40"} width={"auto"} color="#990000" />
 
             {/* sub content #2 */}
-            <span className="text-center text-[#990000] font-serif mt-10">Dengan memohon rahmat dan ridho Aliah SWT kami mengundang Bapak/Ibu Saudara/i untuk menghadiri acara pernikahan putra-putri kami:</span>
-            <div className="flex flex-col gap-4 justify-center items-center">
+            <span className="text-center text-[#990000] font-quicksand mt-10 text-[2.8vw] md:text-[1.5vw] lg:text-[1.2vw]">
+              Dengan memohon rahmat dan ridho Allah SWT kami mengundang Bapak/Ibu Saudara/i untuk menghadiri acara pernikahan putra-putri kami:
+            </span>
+            <div className="flex flex-col gap-4 justify-center items-center font-quicksand">
               <div id="biodata-cpw" className="flex flex-col items-center justify-center">
                 <div className="relative px-10">
                   <div className="w-[50%] absolute aspect-1/1 overflow-hidden rounded-full left-1/2 top-1/2 -translate-x-[48%] -translate-y-[55%]">
@@ -153,14 +209,14 @@ export default function MainPage() {
                   </div>
                 </div>
                 <div id="biodata-description" className="text-center">
-                  <span className="font-bold text-[#990000] text-xl ">FARAH URFANI NUGRAHA, S.Kom</span>
+                  <span className="font-bold text-[#990000] text-[4vw] md:text-[2vw] lg:text-[1.5vw]">FARAH URFANI NUGRAHA, S.Kom</span>
                   <br />
-                  <p className=" text-[#990000] text-sm mt-3">
+                  <p className=" text-[#990000] text-[2.5vw] md:text-[1.3vw] lg:text-[1vw] mt-2">
                     Putri kedua dari <br /> Bapak Ir. Bambang Nugraha & Ibu Siti Zubaidah
                   </p>
                 </div>
               </div>
-              <div id="biodata-cpp" className="flex flex-col items-center justify-center">
+              <div id="biodata-cpp" className="flex flex-col items-center justify-center font-quicksand mt-3">
                 <div className="relative px-10">
                   <div className="w-[50%] absolute aspect-1/1 overflow-hidden rounded-full left-1/2 top-1/2 -translate-x-[48%] -translate-y-[55%]">
                     <Image src={"/images/content-2.jpg"} alt="photo-1" fill className="object-cover object-center scale-140" />
@@ -170,9 +226,9 @@ export default function MainPage() {
                   </div>
                 </div>
                 <div id="biodata-description" className="text-center">
-                  <span className="font-bold text-[#990000] text-xl ">IBNU ABBAS AROBY, S.Kom</span>
+                  <span className="font-bold text-[#990000] text-[4vw] md:text-[2vw] lg:text-[1.5vw]">IBNU ABBAS AROBY, S.Kom</span>
                   <br />
-                  <p className=" text-[#990000] text-sm mt-3">
+                  <p className=" text-[#990000] text-[2.5vw] md:text-[1.3vw] lg:text-[1vw] mt-3">
                     Putri tunggal dari <br /> Bapak Rusman & Ibu Siti Nabilah Aroby
                   </p>
                 </div>
@@ -180,6 +236,33 @@ export default function MainPage() {
             </div>
           </div>
           <img src="/images/content/content-2/Bot.png" alt="TopCard" className="-mt-2" />
+        </div>
+
+        {/* content #3 */}
+        <div className="relative bg-[#990000] py-3 z-10">
+          {/* save a date */}
+          <div
+            className="h-[500px] relative flex flex-col gap-5 justify-center items-center"
+            style={{
+              backgroundImage: "url('/images/content/content-3/cardbox.png')",
+              backgroundSize: "cover",
+            }}
+          >
+            <SaveADate height={"30%"} />
+            <div className="flex gap-5 w-full justify-center">
+              {[
+                { label: "Hari", value: timeLeft.days },
+                { label: "Jam", value: timeLeft.hours },
+                { label: "Menit", value: timeLeft.minutes },
+                { label: "Detik", value: timeLeft.seconds },
+              ].map(({ label, value }, idx) => (
+                <div key={idx} className="w-[15%] aspect-10/15 bg-[#990000] rounded-t-full rounded-b-full opacity-60 flex flex-col gap-2 justify-center items-center text-[#D9A693] py-3 relative overflow-hidden">
+                  <div className="relative h-[3.5em] flex items-center justify-center">{renderAnimatedNumber(value, label)}</div>
+                  <span className="text-[3vw] md:text-[2vw] lg:text-[1.5vw] leading-none">{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </MainLayout>
