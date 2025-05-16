@@ -1,6 +1,6 @@
 "use client";
 // import { BottomCardBox, MiddleCardBox, TopCardBox } from "@/components/icon/content-2/svg";
-import { Background, Background2, FlowerBottom, FlowerFill, FlowerStroke, Rope, SaveADate } from "@/components/icon/content/svg";
+import { Background, Background2, FlowerBottom, FlowerFill, FlowerStroke, Rope, SaveADate, WeddingClipper2, WeddingDateClipper, WeddingDateClipperBorder } from "@/components/icon/content/svg";
 import { And, Fani, Ibnu, Logo } from "@/components/icon/jumbotron/Icons";
 import MainLayout from "@/components/mainLayout";
 import { AnimatePresence, motion } from "framer-motion";
@@ -242,6 +242,7 @@ export default function MainPage() {
         <div className="relative bg-[#990000] py-3 z-10">
           {/* save a date */}
           <div
+            id="save-a-date"
             className="h-[500px] relative flex flex-col gap-5 justify-center items-center"
             style={{
               backgroundImage: "url('/images/content/content-3/cardbox.png')",
@@ -261,6 +262,36 @@ export default function MainPage() {
                   <span className="text-[3vw] md:text-[2vw] lg:text-[1.5vw] leading-none">{label}</span>
                 </div>
               ))}
+            </div>
+          </div>
+          <div id="save-a-date-description" className="mt-10 mx-5 relative flex items-center  justify-center ">
+            <div className="absolute w-[80%] h-[80%] aspect-[7/10] flex flex-col justify-center items-center z-10 px-10 gap-10 font-cormorant font-bold text-[#F1D6AB]">
+              <div id="description_1" className="text-center">
+                <div id="title" className="text-[7vw] md:text-[3vw] lg:text-[2vw]">
+                  <span>AKAD NIKAH</span>
+                </div>
+                <div id="time" className="text-[4vw] md:text-[2vw] lg:text-[1.5vw]">
+                  <span>08:00 - 10:00 WIB</span>
+                </div>
+                <div id="place" className="text-[3vw] md:text-[1.5vw] lg:text-[1vw]">
+                  <span>Legacy Hall, Aston Imperial Bekasi, Jl. KH. Noer Ali No.177, Kayuringin Jaya, Kec. Bekasi sel., Kota Bekasi, Jawa Barat 17144</span>
+                </div>
+              </div>
+              <div id="description_2" className="text-center">
+                <div id="title" className="text-[7vw] md:text-[3vw] lg:text-[2vw]">
+                  <span>RESEPSI</span>
+                </div>
+                <div id="time" className="text-[4vw] md:text-[2vw] lg:text-[1.5vw]">
+                  <span>11:00 - 13:00 WIB</span>
+                </div>
+                <div id="place" className="text-[3vw] md:text-[1.5vw] lg:text-[1vw]">
+                  <span>Legacy Hall, Aston Imperial Bekasi, Jl. KH. Noer Ali No.177, Kayuringin Jaya, Kec. Bekasi sel., Kota Bekasi, Jawa Barat 17144</span>
+                </div>
+              </div>
+              <div className="w-[80%] flex items-center justify-center bg-[#F1D6AB]/80 rounded-full py-3 px-5 text-[#990000] text-[3vw] md:text-[2vw] lg:text-[1.5vw] font-quicksand font-bold">Lihat Lokasi</div>
+            </div>
+            <div className="w-full aspect-[7/10]">
+              <WeddingClipper2 width={"100%"} height={"auto"} />
             </div>
           </div>
         </div>
