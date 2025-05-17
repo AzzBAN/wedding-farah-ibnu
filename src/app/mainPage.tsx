@@ -129,7 +129,7 @@ export default function MainPage() {
   return (
     <MainLayout>
       <div className="w-10 h-10 bg-black rounded-full fixed bottom-3 right-3 z-[1000] text-white flex items-center justify-center transition-all">
-        <audio ref={audioRef} src="/music/music.mp3" loop />
+        <audio ref={audioRef} src="/music/music_romansa_ke_depan.mp3" loop />
         <button
           onClick={toggleMusic}
           className={`w-[70%] h-[70%] rounded-full bg-[#990000] transition-all hover:bg-white hover:text-[#990000] text-white flex items-center justify-center shadow-lg hover:cursor-pointer ${isPlaying ? "animate-spin-slow" : ""}`}
