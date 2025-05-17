@@ -3,11 +3,33 @@
 import { Background, Background2, FlowerBottom, FlowerFill, FlowerStroke, Rope, SaveADate, WeddingClipper2, WeddingDateClipper, WeddingDateClipperBorder } from "@/components/icon/content/svg";
 import { And, Fani, Ibnu, Logo } from "@/components/icon/jumbotron/Icons";
 import MainLayout from "@/components/mainLayout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMusic } from "@fortawesome/free-solid-svg-icons";
+
+<FontAwesomeIcon icon={faMusic} />;
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export default function MainPage() {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      (window as any).playWeddingMusic = () => audioRef.current?.play();
+      (window as any).pauseWeddingMusic = () => audioRef.current?.pause();
+    }
+  }, []);
+  const toggleMusic = () => {
+    if (!isPlaying) {
+      audioRef.current?.play();
+    } else {
+      audioRef.current?.pause();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
   const headerRef = useRef<HTMLDivElement | null>(null);
   const [height, setHeight] = useState<number>(25);
 
@@ -106,6 +128,16 @@ export default function MainPage() {
 
   return (
     <MainLayout>
+      <div className="w-10 h-10 bg-black rounded-full fixed bottom-3 right-3 z-[1000] text-white flex items-center justify-center transition-all">
+        <audio ref={audioRef} src="/music/music.mp3" loop />
+        <button
+          onClick={toggleMusic}
+          className={`w-[70%] h-[70%] rounded-full bg-[#990000] transition-all hover:bg-white hover:text-[#990000] text-white flex items-center justify-center shadow-lg hover:cursor-pointer ${isPlaying ? "animate-spin-slow" : ""}`}
+          title={isPlaying ? "Pause Music" : "Play Music"}
+        >
+          <FontAwesomeIcon icon={faMusic} />
+        </button>
+      </div>
       <div className="w-full overflow-x-hidden min-h-screen">
         {/* content #1 */}
         <div className="relative w-full h-dvh bg-[#990000]">
