@@ -176,60 +176,58 @@ export default function MainPage() {
               backgroundRepeat: "repeat-y",
             }}
           >
-            <img src="/images/content/content-2/flower_card_box.png" alt="flower" className="w-[40%] absolute right-0 top-80 z-0" />
-            <img src="/images/content/content-2/flower-right.png" alt="flower" className="w-[30%] absolute z-10 -right-15 -top-20 animate-swing-slow-right origin-bottom-right" />
-            <img src="/images/content/content-2/flower-left.png" alt="flower" className="w-[25%] absolute z-10 -left-10 top-30 animate-swing-slow-left origin-bottom-left" style={{ animationDelay: "1s" }} />
-            <div className="w-full aspect-[16/10] overflow-hidden rounded-md relative shadow-lg inset-shadow-sm">
-              <Image src="/images/content-2.jpg" alt="content-2" fill className="object-cover object-center scale-140" />
+            <div className="min-h-screen flex flex-col gap-10 pb-10 relative">
+              <img src="/images/content/content-2/flower_card_box.png" alt="flower" className="w-[40%] absolute -right-5 bottom-0 z-0" />
+              {/* <img src="/images/content/content-2/flower_card_box.png" alt="flower" className="w-[40%] absolute left-0 bottom-80 z-0 -scale-x-100" /> */}
+              <img src="/images/content/content-2/flower-right.png" alt="flower" className="w-[30%] absolute z-10 -right-15 -top-20 animate-swing-slow-right origin-bottom-right" />
+              <img src="/images/content/content-2/flower-left.png" alt="flower" className="w-[25%] absolute z-10 -left-10 top-30 animate-swing-slow-left origin-bottom-left" style={{ animationDelay: "1s" }} />
+              <div className="w-full aspect-[16/10] overflow-hidden rounded-md relative shadow-lg inset-shadow-sm">
+                <Image src="/images/DSCF7081.jpg" alt="content-2" fill className="object-cover object-center scale-140" />
+                <div className="absolute top-0 left-0 w-full h-full bg-black opacity-10 z-0"></div>
+              </div>
+              <div className="h-full flex-1 flex flex-col justify-between mb-10">
+                <div className="z-10">
+                  <div className="w-[50%] py-3 mx-auto">
+                    <Image src={"/images/content/content-2/bismillah.png"} alt="Basmallah" height={207} width={1020} />
+                  </div>
+                  <div className="flex flex-col justify-center gap-4 text-[#990000] font-quicksand font-bold text-xs max-sm:text-[11px] z-10">
+                    <span className="text-center text-shadow-sm text-shadow-amber-100">
+                      Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang.
+                      Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
+                    </span>
+                    <span className="text-center text-lg max-sm:text-[13px]">QS. Ar-Rum: 21</span>
+                  </div>
+                </div>
+                <Logo size={"60"} width={"auto"} color="#990000" />
+              </div>
             </div>
-            <div className="w-[50%] py-3 mx-auto z-10">
-              <Image src={"/images/content/content-2/bismillah.png"} alt="Basmallah" height={207} width={1020} />
-            </div>
-            <div className="flex flex-col justify-center gap-4 text-[#990000] font-quicksand font-bold text-xs max-sm:text-[11px] z-10">
-              <span className="text-center text-shadow-sm text-shadow-amber-100">
-                Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang.
-                Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
-              </span>
-              <span className="text-center text-lg max-sm:text-[13px]">QS. Ar-Rum: 21</span>
-            </div>
-            <Logo size={"40"} width={"auto"} color="#990000" />
 
             {/* sub content #2 */}
             <span className="text-center text-[#990000] font-quicksand mt-10 text-[2.8vw] md:text-[1.5vw] lg:text-[1.2vw]">
               Dengan memohon rahmat dan ridho Allah SWT kami mengundang Bapak/Ibu Saudara/i untuk menghadiri acara pernikahan putra-putri kami:
             </span>
-            <div className="flex flex-col gap-4 justify-center items-center font-quicksand">
-              <div id="biodata-cpw" className="flex flex-col items-center justify-center">
-                <div className="relative px-10">
-                  <div className="w-[50%] absolute aspect-1/1 overflow-hidden rounded-full left-1/2 top-1/2 -translate-x-[48%] -translate-y-[55%]">
-                    <Image src={"/images/content-2.jpg"} alt="photo-1" fill className="object-cover object-center scale-140" />
-                  </div>
-                  <div className="relative w-full">
-                    <Image src={"/images/content/content-2/photo_border.png"} height={605} width={666} alt="border" />
-                  </div>
+            <div className="flex flex-col gap-4 justify-center items-center font-quicksand z-100 text-shadow-sm text-shadow-amber-100">
+              <div id="biodata-cpw" className="flex flex-col items-center justify-center gap-5 font-quicksand z-100">
+                <div className="relative w-[50vw] md:w-[30vw] lg:w-[25vw] xl:w-[20vw] aspect-square rounded-xl border-5 border-[#D6A527]/30 overflow-hidden">
+                  <Image src="/images/foto_fani.jpg" alt="photo-1" fill className="object-cover object-center scale-110" sizes="100%" />
                 </div>
                 <div id="biodata-description" className="text-center">
                   <span className="font-bold text-[#990000] text-[4vw] md:text-[2vw] lg:text-[1.5vw]">FARAH URFANI NUGRAHA, S.Kom</span>
                   <br />
-                  <p className=" text-[#990000] text-[2.5vw] md:text-[1.3vw] lg:text-[1vw] mt-2">
+                  <p className=" text-[#990000] text-[2.5vw] md:text-[1.3vw] lg:text-[1vw] mt-2 font-medium">
                     Putri kedua dari <br /> Bapak Ir. Bambang Nugraha & Ibu Siti Zubaidah
                   </p>
                 </div>
               </div>
-              <div id="biodata-cpp" className="flex flex-col items-center justify-center font-quicksand mt-3">
-                <div className="relative px-10">
-                  <div className="w-[50%] absolute aspect-1/1 overflow-hidden rounded-full left-1/2 top-1/2 -translate-x-[48%] -translate-y-[55%]">
-                    <Image src={"/images/content-2.jpg"} alt="photo-1" fill className="object-cover object-center scale-140" />
-                  </div>
-                  <div className="relative w-full">
-                    <Image src={"/images/content/content-2/photo_border.png"} height={605} width={666} alt="border" />
-                  </div>
+              <div id="biodata-cpp" className="flex flex-col items-center justify-center gap-5 font-quicksand mt-3 z-100">
+                <div className="relative w-[50vw] md:w-[30vw] lg:w-[25vw] xl:w-[20vw] aspect-square rounded-xl border-5 border-[#D6A527]/30 overflow-hidden">
+                  <Image src="/images/foto_ibnu.jpg" alt="photo-1" fill className="object-cover object-center scale-130 mt-5" sizes="100%" />
                 </div>
                 <div id="biodata-description" className="text-center">
                   <span className="font-bold text-[#990000] text-[4vw] md:text-[2vw] lg:text-[1.5vw]">IBNU ABBAS AROBY, S.Kom</span>
                   <br />
                   <p className=" text-[#990000] text-[2.5vw] md:text-[1.3vw] lg:text-[1vw] mt-3">
-                    Putri tunggal dari <br /> Bapak Rusman & Ibu Siti Nabilah Aroby
+                    Putra tunggal dari <br /> Bapak Rusman & Ibu Siti Nabilah Aroby
                   </p>
                 </div>
               </div>
@@ -288,7 +286,7 @@ export default function MainPage() {
                   <span>Legacy Hall, Aston Imperial Bekasi, Jl. KH. Noer Ali No.177, Kayuringin Jaya, Kec. Bekasi sel., Kota Bekasi, Jawa Barat 17144</span>
                 </div>
               </div>
-              <div className="w-[80%] flex items-center justify-center bg-[#F1D6AB]/80 rounded-full py-3 px-5 text-[#990000] text-[3vw] md:text-[2vw] lg:text-[1.5vw] font-quicksand font-bold">Lihat Lokasi</div>
+              <div className="w-[80%] flex items-center justify-center bg-[#F1D6AB]/80 rounded-full py-2 px-5 text-[#990000] text-[3vw] md:text-[2vw] lg:text-[1.5vw] font-quicksand font-bold">Lihat Lokasi</div>
             </div>
             <div className="w-full aspect-[7/10]">
               <WeddingClipper2 width={"100%"} height={"auto"} />

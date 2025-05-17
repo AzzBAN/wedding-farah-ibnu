@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Jumbotron from "./jumbotron/jumbotron";
 import { useLayout } from "./LayoutContext";
+import JumbotronV2 from "./jumbotron/jumbotronv2";
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   const { isOpen } = useLayout();
@@ -24,7 +25,8 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       {showTop && (
         <div className={`min-h-dvh fixed overflow-hidden top-0 left-0 w-full h-full z-10 ${animate ? "animate-slide-up-fade" : "block"}`}>
           <div className="block w-full h-full overflow-hidden">
-            <Jumbotron isOpening={true} />
+            {/* <Jumbotron isOpening={true} /> */}
+            <JumbotronV2 isOpening={true} />
           </div>
         </div>
       )}
@@ -33,7 +35,8 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       <div className="relative z-0 flex min-h-dvh">
         {/* Left side (Jumbotron static) - hidden on mobile */}
         <div className="hidden md:block md:w-1/2 lg:w-3/5 fixed h-full overflow-hidden">
-          <Jumbotron isOpening={false} />
+          <JumbotronV2 isOpening={false} />
+          {/* <Jumbotron isOpening={false} /> */}
         </div>
 
         {/* Right side (Content) */}

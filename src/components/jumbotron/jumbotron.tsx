@@ -16,7 +16,7 @@ export default function Jumbotron({ isOpening }: { isOpening?: boolean }) {
       clearTimeout(timeout);
       timeout = setTimeout(() => {
         const containerWidth = containerRef.current?.offsetWidth || 0;
-        const papanWidth = 32;
+        const papanWidth = 30;
         const newCount = Math.ceil(containerWidth / papanWidth);
 
         if (newCount !== count) {
@@ -40,7 +40,7 @@ export default function Jumbotron({ isOpening }: { isOpening?: boolean }) {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div ref={containerRef} className="absolute top-0 left-0 right-0 w-full h-1/7">
+        <div ref={containerRef} className="absolute -top-2 left-0 right-0 w-full h-1/7">
           <div className="flex h-full w-full justify-center gap-[2px]">
             {Array.from({ length: count }).map((_, idx) => {
               const isEdge = idx === 0 || idx === count - 1;
