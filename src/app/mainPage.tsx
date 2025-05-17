@@ -141,6 +141,47 @@ export default function MainPage() {
       <div className="w-full overflow-x-hidden min-h-screen">
         {/* content #1 */}
         <div className="relative w-full h-dvh bg-[#990000]">
+          <div className="w-full h-full z-0 aspect-square overflow-hidden">
+            <Image src="/images/content-1.png" alt="placeholder" fill className="object-cover absolute" />
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-black/40 via-[#990000]-800/40 to-transparent z-0"></div>
+            <div
+              className="absolute top-0 left-0 w-full h-full z-0"
+              style={{
+                background: "linear-gradient(to top, rgba(0, 0, 0, 1) 0%, transparent 30%)",
+              }}
+            ></div>
+            <div
+              className="absolute top-0 left-0 w-full h-full z-0"
+              style={{
+                background: "linear-gradient(to top, rgba(153, 0, 0, 1) 0%, transparent 50%)",
+              }}
+            ></div>
+            <div className="absolute top-0 left-0 w-full h-full bg-[#990000] opacity-10 z-0"></div>
+          </div>
+          <div className="absolute w-full h-max bottom-20">
+            <div className="w-full flex flex-col items-center">
+              <span className="text-2xl font-cormorant text-center text-[#D6A527]">THE WEDDING OF</span>
+              <div className="flex gap-4 justify-center items-center mb-3">
+                <Fani color="#D6A527" size={120} />
+                <And color="#D6A527" size={50} />
+                <Ibnu color="#D6A527" size={120} />
+              </div>
+              <div className="w-full flex flex-col font-bold text-[#D6A527] gap-2 mb-4">
+                <div className="w-full flex justify-center text-center">
+                  <span className="text-sm font-quicksand">
+                    Kepada Yth.
+                    <br />
+                    Bapak/Ibu/Saudara/I
+                  </span>
+                </div>
+                <div className="w-full flex justify-center text-center">
+                  <span className="text-2xl font-bold font-quicksand ">Aladin dan Partner</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* <div className="relative w-full h-dvh bg-[#990000]">
           <div className="absolute w-full h-dvh overflow-hidden z-10">
             <div className="absolute w-full z-0 min-[540px]:max-[768px]:max-w-[80%] xl:max-w-[80%]">
               <Background2 height={"100%"} width={"auto"} />
@@ -195,9 +236,9 @@ export default function MainPage() {
           <div className="absolute w-full z-0 aspect-square overflow-hidden min-[540px]:max-[768px]:max-w-[80%] xl:max-w-[80%]">
             <Image src="/images/content-1.png" alt="placeholder" width={1025} height={1539} className="object-cover absolute -left-15 -top-20 -rotate-12" />
           </div>
-        </div>
+        </div> */}
         {/* content #2 */}
-        <div ref={containerRef} className="relative bg-[#990000] px-7 py-3">
+        <div ref={containerRef} className="relative overflow-hidden bg-[#990000] px-7 py-3">
           {/* sub content #1 */}
           <img src="/images/content/content-2/Top.png" alt="TopCard" className="-mb-2" />
           <div
