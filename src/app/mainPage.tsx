@@ -1,35 +1,15 @@
 "use client";
+import Gallery from "@/components/gallery/gallery";
+import AnimatedSection from "@/components/hooks/useInView";
 // import { BottomCardBox, MiddleCardBox, TopCardBox } from "@/components/icon/content-2/svg";
 import { Background, Background2, FlowerBottom, FlowerFill, FlowerStroke, Rope, SaveADate, WeddingClipper2, WeddingDateClipper, WeddingDateClipperBorder } from "@/components/icon/content/svg";
 import { And, Fani, Ibnu, Logo } from "@/components/icon/jumbotron/Icons";
 import MainLayout from "@/components/mainLayout";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMusic } from "@fortawesome/free-solid-svg-icons";
-
-<FontAwesomeIcon icon={faMusic} />;
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export default function MainPage() {
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      (window as any).playWeddingMusic = () => audioRef.current?.play();
-      (window as any).pauseWeddingMusic = () => audioRef.current?.pause();
-    }
-  }, []);
-  const toggleMusic = () => {
-    if (!isPlaying) {
-      audioRef.current?.play();
-    } else {
-      audioRef.current?.pause();
-    }
-    setIsPlaying(!isPlaying);
-  };
-
   const headerRef = useRef<HTMLDivElement | null>(null);
   const [height, setHeight] = useState<number>(25);
 
@@ -128,16 +108,6 @@ export default function MainPage() {
 
   return (
     <MainLayout>
-      <div className="w-10 h-10 bg-black rounded-full fixed bottom-3 right-3 z-[1000] text-white flex items-center justify-center transition-all">
-        <audio ref={audioRef} src="/music/music_romansa_ke_depan.mp3" loop />
-        <button
-          onClick={toggleMusic}
-          className={`w-[70%] h-[70%] rounded-full bg-[#990000] transition-all hover:bg-white hover:text-[#990000] text-white flex items-center justify-center shadow-lg hover:cursor-pointer ${isPlaying ? "animate-spin-slow" : ""}`}
-          title={isPlaying ? "Pause Music" : "Play Music"}
-        >
-          <FontAwesomeIcon icon={faMusic} />
-        </button>
-      </div>
       <div className="w-full overflow-x-hidden min-h-screen">
         {/* content #1 */}
         <div className="relative w-full h-dvh bg-[#990000]">
@@ -159,14 +129,14 @@ export default function MainPage() {
             <div className="absolute top-0 left-0 w-full h-full bg-[#990000] opacity-10 z-0"></div>
           </div>
           <div className="absolute w-full h-max bottom-20">
-            <div className="w-full flex flex-col items-center">
-              <span className="text-2xl font-cormorant text-center text-[#D6A527]">THE WEDDING OF</span>
-              <div className="flex gap-4 justify-center items-center mb-3">
+            <div className="w-full flex flex-col items-center z-20">
+              <span className="text-2xl font-cormorant text-center text-[#D6A527] animate-slide-up">THE WEDDING OF</span>
+              <div className="flex gap-4 justify-center items-center mb-3 animate-slide-up">
                 <Fani color="#D6A527" size={120} />
                 <And color="#D6A527" size={50} />
                 <Ibnu color="#D6A527" size={120} />
               </div>
-              <div className="w-full flex flex-col font-bold text-[#D6A527] gap-2 mb-4">
+              <div className="w-full flex flex-col font-bold text-[#D6A527] gap-2 mb-4 animate-slide-up">
                 <div className="w-full flex justify-center text-center">
                   <span className="text-sm font-quicksand">
                     Kepada Yth.
@@ -174,69 +144,13 @@ export default function MainPage() {
                     Bapak/Ibu/Saudara/I
                   </span>
                 </div>
-                <div className="w-full flex justify-center text-center">
+                <div className="w-full flex justify-center text-center animate-slide-up">
                   <span className="text-2xl font-bold font-quicksand ">Aladin dan Partner</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {/* <div className="relative w-full h-dvh bg-[#990000]">
-          <div className="absolute w-full h-dvh overflow-hidden z-10">
-            <div className="absolute w-full z-0 min-[540px]:max-[768px]:max-w-[80%] xl:max-w-[80%]">
-              <Background2 height={"100%"} width={"auto"} />
-            </div>
-            <div className="absolute w-full z-10 min-[540px]:max-[768px]:max-w-[80%] xl:max-w-[80%]">
-              <Background height={"100%"} width={"auto"} />
-            </div>
-            <div className="relative flex flex-col h-dvh">
-              <div className="relative w-full aspect-square z-20">
-                <div className="absolute z-10 right-[-5px] bottom-0 w-[40%] animate-swing-slow-right origin-bottom-right" style={{ animationDelay: "1.2s" }}>
-                  <FlowerStroke width={"100%"} height={"auto"} />
-                </div>
-                <div className="absolute z-20 right-[-5px] bottom-0 w-[25%] animate-swing-slow-right origin-bottom-right">
-                  <FlowerFill width={"100%"} height={"auto"} />
-                </div>
-                <div className="absolute w-full min-w-[400px] z-30 md:-bottom-65 lg:-bottom-75 max-md:-bottom-80">
-                  <Rope width={"100%"} height={"auto"} />
-                </div>
-              </div>
-              <div ref={headerRef} className="relative flex-1 h-full flex flex-col gap-2 justify-center w-full z-100 text-center text-3xl font-bold text-[#D6A527]">
-                <div className="absolute w-full h-max max-[540px]:top-0 xl:-top-20 md:top-0" style={{ bottom: height ? `${height * 0.5}px` : undefined }}>
-                  <div>
-                    <span className="text-2xl font-cormorant">THE WEDDING OF</span>
-                    <div className="flex gap-4 justify-center items-center mb-3">
-                      <Fani color="#D6A527" size={120} />
-                      <And color="#D6A527" size={50} />
-                      <Ibnu color="#D6A527" size={120} />
-                    </div>
-                    <div className="w-full flex flex-col font-bold text-[#D6A527] gap-2 mb-4">
-                      <div className="w-full flex justify-center text-center">
-                        <span className="text-sm font-quicksand">
-                          Kepada Yth.
-                          <br />
-                          Bapak/Ibu/Saudara/I
-                        </span>
-                      </div>
-                      <div className="w-full flex justify-center text-center">
-                        <span className="text-2xl font-bold font-quicksand ">Aladin dan Partner</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="absolute w-[10%] top-10 right-10 z-30 ">
-              <Logo size={"auto"} width={"100%"} color="#D6A527" />
-            </div>
-          </div>
-          <div className="absolute w-[25%] min-w-[150px] -bottom-2 -left-8 z-30 animate-swing-slow-left origin-bottom-left">
-            <FlowerBottom width={"100%"} height={"auto"} />
-          </div>
-          <div className="absolute w-full z-0 aspect-square overflow-hidden min-[540px]:max-[768px]:max-w-[80%] xl:max-w-[80%]">
-            <Image src="/images/content-1.png" alt="placeholder" width={1025} height={1539} className="object-cover absolute -left-15 -top-20 -rotate-12" />
-          </div>
-        </div> */}
         {/* content #2 */}
         <div ref={containerRef} className="relative overflow-hidden bg-[#990000] px-7 py-3">
           {/* sub content #1 */}
@@ -254,11 +168,13 @@ export default function MainPage() {
               {/* <img src="/images/content/content-2/flower_card_box.png" alt="flower" className="w-[40%] absolute left-0 bottom-80 z-0 -scale-x-100" /> */}
               <img src="/images/content/content-2/flower-right.png" alt="flower" className="w-[30%] absolute z-10 -right-15 -top-20 animate-swing-slow-right origin-bottom-right" />
               <img src="/images/content/content-2/flower-left.png" alt="flower" className="w-[25%] absolute z-10 -left-10 top-30 animate-swing-slow-left origin-bottom-left" style={{ animationDelay: "1s" }} />
-              <div className="w-full aspect-[16/10] overflow-hidden rounded-md relative shadow-lg inset-shadow-sm">
-                <Image src="/images/DSCF7081.jpg" alt="content-2" fill className="object-cover object-center scale-140" />
-                <div className="absolute top-0 left-0 w-full h-full bg-black opacity-10 z-0"></div>
-              </div>
-              <div className="h-full flex-1 flex flex-col justify-between mb-10">
+              <AnimatedSection>
+                <div className={`w-full aspect-[16/10] overflow-hidden rounded-md relative shadow-lg inset-shadow-sm`}>
+                  <Image src="/images/DSCF7081.jpg" alt="content-2" fill className={`object-cover object-center scale-140`} />
+                  <div className="absolute top-0 left-0 w-full h-full bg-black opacity-10 z-0"></div>
+                </div>
+              </AnimatedSection>
+              <AnimatedSection className="h-full flex-1 flex flex-col justify-between mb-10">
                 <div className="z-10">
                   <div className="w-[50%] py-3 mx-auto">
                     <Image src={"/images/content/content-2/bismillah.png"} alt="Basmallah" height={207} width={1020} />
@@ -272,17 +188,24 @@ export default function MainPage() {
                   </div>
                 </div>
                 <Logo size={"60"} width={"auto"} color="#990000" />
-              </div>
+              </AnimatedSection>
             </div>
 
             {/* sub content #2 */}
-            <span className="text-center text-[#990000] font-quicksand mt-10 text-[2.8vw] md:text-[1.5vw] lg:text-[1.2vw]">
-              Dengan memohon rahmat dan ridho Allah SWT kami mengundang Bapak/Ibu Saudara/i untuk menghadiri acara pernikahan putra-putri kami:
-            </span>
+            <AnimatedSection>
+              <span className="text-center text-[#990000] font-quicksand mt-10 text-[2.8vw] md:text-[1.5vw] lg:text-[1.2vw]">
+                Dengan memohon rahmat dan ridho Allah SWT kami mengundang Bapak/Ibu Saudara/i untuk menghadiri acara pernikahan putra-putri kami:
+              </span>
+            </AnimatedSection>
             <div className="flex flex-col gap-4 justify-center items-center font-quicksand z-100 text-shadow-sm text-shadow-amber-100">
-              <div id="biodata-cpw" className="flex flex-col items-center justify-center gap-5 font-quicksand z-100">
+              <AnimatedSection id="biodata-cpw" className="relative flex flex-col items-center justify-center gap-5 font-quicksand z-100">
                 <div className="relative w-[50vw] md:w-[30vw] lg:w-[25vw] xl:w-[20vw] aspect-square rounded-xl border-5 border-[#D6A527]/30 overflow-hidden">
                   <Image src="/images/foto_fani.jpg" alt="photo-1" fill className="object-cover object-center scale-110" sizes="100%" />
+                </div>
+                <div className="absolute top-0 w-[50vw] md:w-[30vw] lg:w-[25vw] xl:w-[20vw] aspect-square ">
+                  <div className="absolute bottom-0 -right-2 -rotate-30 bg-[#D6A527]">
+                    <span className="text-[4vw] md:text-[2vw] lg:text-[1.5vw] font-birthstone leading-0">Fani</span>
+                  </div>
                 </div>
                 <div id="biodata-description" className="text-center">
                   <span className="font-bold text-[#990000] text-[4vw] md:text-[2vw] lg:text-[1.5vw]">FARAH URFANI NUGRAHA, S.Kom</span>
@@ -291,19 +214,19 @@ export default function MainPage() {
                     Putri kedua dari <br /> Bapak Ir. Bambang Nugraha & Ibu Siti Zubaidah
                   </p>
                 </div>
-              </div>
-              <div id="biodata-cpp" className="flex flex-col items-center justify-center gap-5 font-quicksand mt-3 z-100">
+              </AnimatedSection>
+              <AnimatedSection id="biodata-cpp" className="flex flex-col items-center justify-center gap-5 font-quicksand mt-3 z-100">
                 <div className="relative w-[50vw] md:w-[30vw] lg:w-[25vw] xl:w-[20vw] aspect-square rounded-xl border-5 border-[#D6A527]/30 overflow-hidden">
-                  <Image src="/images/foto_ibnu.jpg" alt="photo-1" fill className="object-cover object-center scale-130 mt-5" sizes="100%" />
+                  <Image src="/images/foto_ibnu.jpg" alt="photo-1" fill className="object-cover object-center scale-130" sizes="100%" />
                 </div>
                 <div id="biodata-description" className="text-center">
                   <span className="font-bold text-[#990000] text-[4vw] md:text-[2vw] lg:text-[1.5vw]">IBNU ABBAS AROBY, S.Kom</span>
                   <br />
-                  <p className=" text-[#990000] text-[2.5vw] md:text-[1.3vw] lg:text-[1vw] mt-3">
-                    Putra tunggal dari <br /> Bapak Rusman & Ibu Siti Nabilah Aroby
+                  <p className=" text-[#990000] text-[2.5vw] md:text-[1.3vw] lg:text-[1vw] mt-3 font-medium">
+                    Putra tunggal dari <br /> Bapak Rusman Aroby & Ibu Siti Nabilah Aroby
                   </p>
                 </div>
-              </div>
+              </AnimatedSection>
             </div>
           </div>
           <img src="/images/content/content-2/Bot.png" alt="TopCard" className="-mt-2" />
@@ -359,13 +282,20 @@ export default function MainPage() {
                   <span>Legacy Hall, Aston Imperial Bekasi, Jl. KH. Noer Ali No.177, Kayuringin Jaya, Kec. Bekasi sel., Kota Bekasi, Jawa Barat 17144</span>
                 </div>
               </div>
-              <div className="w-[80%] flex items-center justify-center bg-[#F1D6AB]/80 rounded-full py-2 px-5 text-[#990000] text-[3vw] md:text-[2vw] lg:text-[1.5vw] font-quicksand font-bold">Lihat Lokasi</div>
+              <div className="w-[80%] flex items-center justify-center bg-[#F1D6AB]/80 rounded-full py-2 px-5 text-[#990000] text-[3vw] md:text-[2vw] lg:text-[1.5vw] font-quicksand font-bold">
+                <a href="https://maps.app.goo.gl/fohEdam8PJ9dRDgw8" target="_blank">
+                  Lihat Lokasi
+                </a>
+              </div>
             </div>
             <div className="w-full aspect-[7/10]">
               <WeddingClipper2 width={"100%"} height={"auto"} />
             </div>
           </div>
         </div>
+
+        {/* OUR GALLERY */}
+        <Gallery />
       </div>
     </MainLayout>
   );

@@ -42,7 +42,7 @@ export default function JumbotronV2({ isOpening }: { isOpening?: boolean }) {
                 background: "linear-gradient(to top, rgba(153, 0, 0, 0.6) 0%, transparent 50%)",
               }}
             ></div>
-            <div className="absolute bottom-10 w-full">
+            <div className="absolute bottom-20 w-full">
               <div className="flex gap-3 justify-center items-center mt-3">
                 <Fani color="#FFF" size={"100%"} className="w-30 max-sm:w-20" />
                 <And color="#FFF" size={"100%"} className="w-10 max-sm:w-5" />
@@ -52,8 +52,8 @@ export default function JumbotronV2({ isOpening }: { isOpening?: boolean }) {
           </>
         )}
         {isOpening && (
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 bg-black opacity-75  w-[500px] h-3/4 rounded-xl max-sm:w-3/4">
-            <div className="flex flex-col justify-evenly items-center h-full p-10 text-[#D6A527] ">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 bg-black opacity-75  w-[500px] h-3/4 rounded-xl max-sm:w-3/4 animate-slide-up-jumbo">
+            <div className="flex flex-col justify-evenly items-center gap-5 h-full p-10 text-[#D6A527] ">
               <div className="text-center">
                 <span className="text-3xl text-[#C43C37] font-bold font-cormorant max-sm:text-xl">THE WEDDING OF</span>
                 <div className="flex gap-3 justify-center items-center mt-3">
@@ -66,8 +66,10 @@ export default function JumbotronV2({ isOpening }: { isOpening?: boolean }) {
                 </div>
               </div>
               <div className="flex flex-col gap-7 justify-center items-center text-center">
-                <span className="font-birthstone text-5xl">Dear,</span>
-                <span className="font-quicksand text-3xl font-bold text-[#b00303]">Alladin & Partner</span>
+                <div className="flex flex-col gap-2">
+                  <span className="font-birthstone text-5xl">Dear,</span>
+                  <span className="font-quicksand text-3xl font-bold text-[#b00303]">Alladin & Partner</span>
+                </div>
                 <span className="font-cormorant">You are cordially invited to our wedding celebration</span>
                 <div
                   className="w-[70%] bg-[#990000] text-center text-white px-3 py-3 rounded-full shadow-5xl font-quicksand cursor-pointer"

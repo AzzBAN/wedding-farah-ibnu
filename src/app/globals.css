@@ -61,9 +61,53 @@
   --animate-swing-slow-right: swing-slow-right 5s ease-in-out infinite;
   --animate-swing-slow-left: swing-slow-left 5s ease-in-out infinite;
   --animate-spin-slow: spin 4s linear infinite;
+  --animate-slide-up-jumbo: slide-up-jumbo 1.5s ease-in-out forwards;
+  --animate-slide-up: slide-up 1.5s ease-in-out forwards;
+  --animate-slide-left: slide-left 1.5s ease-in-out forwards;
+  --animate-slide-right: slide-right 1.5s ease-in-out forwards;
 }
 
 @layer utilities {
+  @keyframes slide-up-jumbo {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 0.75;
+    }
+  }
+  @keyframes slide-up {
+    0% {
+      transform: translateY(20%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-left {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-right {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
   @keyframes breathe {
     0%,
     100% {
