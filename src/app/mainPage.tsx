@@ -5,6 +5,7 @@ import AnimatedSection from "@/components/hooks/useInView";
 import { Background, Background2, FlowerBottom, FlowerFill, FlowerStroke, Rope, SaveADate, WeddingClipper2, WeddingDateClipper, WeddingDateClipperBorder } from "@/components/icon/content/svg";
 import { And, Fani, Ibnu, Logo } from "@/components/icon/jumbotron/Icons";
 import MainLayout from "@/components/mainLayout";
+import Ucapan from "@/components/ucapan/ucapan";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -258,7 +259,7 @@ export default function MainPage() {
               ))}
             </div>
           </div>
-          <div id="save-a-date-description" className="mt-10 mx-5 relative flex items-center  justify-center ">
+          <div id="save-a-date-description" className="my-10 mx-5 relative flex items-center  justify-center ">
             <div className="absolute w-[80%] h-[80%] aspect-[7/10] flex flex-col justify-center items-center z-10 px-10 gap-10 font-cormorant font-bold text-[#F1D6AB]">
               <div id="description_1" className="text-center">
                 <div id="title" className="text-[7vw] md:text-[3vw] lg:text-[2vw]">
@@ -296,6 +297,9 @@ export default function MainPage() {
 
         {/* OUR GALLERY */}
         <Gallery />
+
+        {/* Ucapan */}
+        <Ucapan />
       </div>
     </MainLayout>
   );

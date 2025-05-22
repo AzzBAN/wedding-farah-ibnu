@@ -11,6 +11,11 @@
 
 /* Generate font faces from public/fonts */
 @font-face {
+  font-family: "Imperial Script";
+  src: url("/fonts/ImperialScript-Regular.ttf") format("truetype");
+  font-style: normal;
+}
+@font-face {
   font-family: "Cormorant Garamond";
   src: url("/fonts/CormorantGaramond-Italic-VariableFont_wght.ttf") format("truetype");
   font-style: italic;
@@ -50,6 +55,7 @@
 }
 
 @theme {
+  --font-imperial-script: "Imperial Script", cursive;
   --font-cormorant: "Cormorant Garamond", serif;
   --font-romanesco: "Romanesco", cursive;
   --font-birthstone: "Birthstone", cursive;
