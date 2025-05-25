@@ -4,11 +4,12 @@ import Jumbotron from "./jumbotron/jumbotron";
 import { useLayout } from "./LayoutContext";
 import JumbotronV2 from "./jumbotron/jumbotronv2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMusic } from "@fortawesome/free-solid-svg-icons";
+import { faMusic, faX, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   const { isOpen } = useLayout();
+  const { isModalOpen, setIsModalOpen } = useLayout();
   const [showTop, setShowTop] = useState(true);
   const [animate, setAnimate] = useState(false);
 
@@ -42,6 +43,59 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <div className="relative">
+      {isModalOpen && (
+        <>
+          <div className={`fixed z-100 h-screen w-screen bg-black/50`}>
+            <div
+              className={`fixed flex flex-col justify-center items-center gap-5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-100 bg-[#F1D6AB] w-[500px] h-3/4 rounded-xl max-sm:w-3/4 ${
+                isModalOpen ? "animate-popin-modal" : "animate-popout-modal"
+              }`}
+            >
+              <button className="absolute top-2 right-2 hover:cursor-pointer" onClick={() => setIsModalOpen(!isModalOpen)}>
+                <div className=" flex items-center justify-center bg-[#990000] hover:bg-[#F1D6AB] border-1 border-[#990000] rounded-md p-2 text-[#F1D6AB] hover:text-[#990000] text-[3vw] md:text-[2vw] lg:text-[1.5vw] font-quicksand font-bold transition-colors duration-100">
+                  <FontAwesomeIcon icon={faX} />
+                </div>
+              </button>
+              <div id="modal-content" className="px-7 flex flex-col gap-3 justify-center items-center w-full">
+                <div className="w-full flex flex-col justify-center items-center font-quicksand bg-[#990000] rounded-lg text-[#F1D6AB] text-xl text-center gap-2 p-5">
+                  <span className="font-black">Bank BCA</span>
+                  <span className="font-medium">7391538551</span>
+                  <span>a.n Farah Urfani Nugraha</span>
+                  <button
+                    className="bg-[#F1D6AB] text-[#990000] hover:bg-[#F1D6AB]/50 hover:text-[#F1D6AB] transition-colors duration-100 hover:cursor-pointer rounded-md px-3 py-1"
+                    onClick={() => navigator.clipboard.writeText("7391538551 - a.n Farah Urfani Nugraha")}
+                  >
+                    <FontAwesomeIcon icon={faCopy} /> Salin
+                  </button>
+                </div>
+              </div>
+              <div id="modal-content" className="px-7 flex flex-col gap-3 justify-center items-center w-full">
+                <div className="w-full flex flex-col justify-center items-center font-quicksand bg-[#990000] rounded-lg text-[#F1D6AB] text-xl text-center gap-2 p-5">
+                  <span className="font-black">Bank DBS</span>
+                  <span className="font-medium">1705796713</span>
+                  <span>a.n Ibnu Abbas</span>
+                  <button
+                    className="bg-[#F1D6AB] text-[#990000] hover:bg-[#F1D6AB]/50 hover:text-[#F1D6AB] transition-colors duration-100 hover:cursor-pointer rounded-md px-3 py-1"
+                    onClick={() => navigator.clipboard.writeText("1705796713 - a.n Ibnu Abbas")}
+                  >
+                    <FontAwesomeIcon icon={faCopy} /> Salin
+                  </button>
+                </div>
+              </div>
+              <div id="modal-content" className="px-7 flex flex-col gap-3 justify-center items-center w-full font-quicksand text-[#990000] text-lg text-center">
+                <span className="font-black">Kirim Kado</span>
+                <span>Jl. Bambu Kuning IX Aqilla Residence 2 no.1 Sepanjang Jaya, Rawalumbu Kota Bekasi 17114</span>
+                <button
+                  className="bg-[#990000] text-[#F1D6AB] hover:bg-[#990000]/50 hover:text-[#990000] transition-colors duration-100 hover:cursor-pointer rounded-md px-3 py-1"
+                  onClick={() => navigator.clipboard.writeText("Jl. Bambu Kuning IX Aqilla Residence 2 no.1 Sepanjang Jaya, Rawalumbu Kota Bekasi 17114")}
+                >
+                  <FontAwesomeIcon icon={faCopy} /> Salin Alamat
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
       <div className={`${showTop ? "hidden" : "block"} w-10 h-10 bg-black rounded-full fixed bottom-3 right-3 z-[1000] text-white flex items-center justify-center transition-all`}>
         <audio ref={audioRef} src="/music/music_romansa_ke_depan.mp3" loop />
         <button

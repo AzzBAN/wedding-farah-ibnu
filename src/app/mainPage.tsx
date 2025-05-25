@@ -100,7 +100,7 @@ export default function MainPage() {
           stiffness: 300, // controls the speed (higher = faster)
           damping: 15, // controls the bounciness (lower = more bounce)
         }}
-        className="text-[7vw] md:text-[5vw] lg:text-[3vw] leading-none absolute"
+        className="text-[7vw] md:text-[3vw] lg:text-[2.5vw] leading-none absolute"
       >
         {value}
       </motion.span>
@@ -204,8 +204,8 @@ export default function MainPage() {
                   <Image src="/images/foto_fani.jpg" alt="photo-1" fill className="object-cover object-center scale-110" sizes="100%" />
                 </div>
                 <div className="absolute top-0 w-[50vw] md:w-[30vw] lg:w-[25vw] xl:w-[20vw] aspect-square ">
-                  <div className="absolute bottom-0 -right-2 -rotate-30 bg-[#D6A527]">
-                    <span className="text-[4vw] md:text-[2vw] lg:text-[1.5vw] font-birthstone leading-0">Fani</span>
+                  <div className="absolute bottom-0 -right-2 -rotate-30">
+                    <span className="text-[10vw] md:text-[2vw] lg:text-[1.5vw] font-birthstone leading-none text-[#d82525] font-black ">Fani</span>
                   </div>
                 </div>
                 <div id="biodata-description" className="text-center">
@@ -216,9 +216,14 @@ export default function MainPage() {
                   </p>
                 </div>
               </AnimatedSection>
-              <AnimatedSection id="biodata-cpp" className="flex flex-col items-center justify-center gap-5 font-quicksand mt-3 z-100">
+              <AnimatedSection id="biodata-cpp" className="relative flex flex-col items-center justify-center gap-5 font-quicksand mt-3 z-100">
                 <div className="relative w-[50vw] md:w-[30vw] lg:w-[25vw] xl:w-[20vw] aspect-square rounded-xl border-5 border-[#D6A527]/30 overflow-hidden">
                   <Image src="/images/foto_ibnu.jpg" alt="photo-1" fill className="object-cover object-center scale-130" sizes="100%" />
+                </div>
+                <div className="absolute top-0 w-[50vw] md:w-[30vw] lg:w-[25vw] xl:w-[20vw] aspect-square ">
+                  <div className="absolute bottom-0 -left-2 rotate-15">
+                    <span className="text-[10vw] md:text-[2vw] lg:text-[1.5vw] font-birthstone leading-none text-[#eeca7e] font-black text-shadow-[3px_2px_2px_rgba(1,1,1,0.8)]">Ibnu</span>
+                  </div>
                 </div>
                 <div id="biodata-description" className="text-center">
                   <span className="font-bold text-[#990000] text-[4vw] md:text-[2vw] lg:text-[1.5vw]">IBNU ABBAS AROBY, S.Kom</span>
@@ -252,11 +257,16 @@ export default function MainPage() {
                 { label: "Menit", value: timeLeft.minutes },
                 { label: "Detik", value: timeLeft.seconds },
               ].map(({ label, value }, idx) => (
-                <div key={idx} className="w-[15%] aspect-10/15 bg-[#990000] rounded-t-full rounded-b-full opacity-60 flex flex-col gap-2 justify-center items-center text-[#D9A693] py-3 relative overflow-hidden">
+                <div key={idx} className="w-[15%] aspect-square bg-[#990000] rounded-lg opacity-60 flex flex-col gap-2 justify-center items-center text-[#D9A693] py-3 relative overflow-hidden">
                   <div className="relative h-[3.5em] flex items-center justify-center">{renderAnimatedNumber(value, label)}</div>
                   <span className="text-[3vw] md:text-[2vw] lg:text-[1.5vw] leading-none">{label}</span>
                 </div>
               ))}
+            </div>
+            <div className="w-[40%] min-w-[300px] flex items-center justify-center bg-[#990000]/80 rounded-full py-2 px-5 text-[#F1D6AB] text-[3vw] md:text-[2vw] lg:text-[1.5vw] font-quicksand font-bold">
+              <a href="https://maps.app.goo.gl/fohEdam8PJ9dRDgw8" target="_blank">
+                Simpan Di Kalender
+              </a>
             </div>
           </div>
           <div id="save-a-date-description" className="my-10 mx-5 relative flex items-center  justify-center ">
@@ -300,6 +310,13 @@ export default function MainPage() {
 
         {/* Ucapan */}
         <Ucapan />
+
+        {/* Bottom Bar */}
+        <div className="flex items-center justify-center h-20 bg-[#990000] text-[#F1D6AB] text-sm font-quicksand font-bold">
+          <a href="https://www.linkedin.com/in/azharngrh/" target="_blank">
+            © 2025 All rights Reserved - Design by Azhar Nugraha
+          </a>
+        </div>
       </div>
     </MainLayout>
   );

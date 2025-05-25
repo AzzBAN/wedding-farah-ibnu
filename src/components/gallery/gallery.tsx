@@ -1,11 +1,12 @@
 import { Image } from "antd";
 import AnimatedSection from "../hooks/useInView";
+import WeddingGift from "../wedding-gift/WeddingGift";
 
 export default function Gallery() {
   const gallery_prefix = "/images/gallery/gallery";
   return (
     <>
-      <div className="relative flex flex-col gap-7 justify-center items-center bg-[#990000] pt-10 pb-10 z-10 w-full ">
+      <div className="relative flex flex-col gap-7 justify-center items-center bg-[#990000] pt-10 pb-10 z-10 w-full shadow-[0_4px_6px_-1px_rgba(0,0,0,0.3)]">
         <div
           className="absolute inset-0 w-full h-full"
           style={{
@@ -20,12 +21,15 @@ export default function Gallery() {
         <div className="grid grid-cols-2 px-7 gap-7">
           {Array.from({ length: 6 }).map((_, i) => (
             <AnimatedSection animation={i % 2 === 0 ? "slide_right" : "slide_left"} key={i}>
-              <div className="border-2 border-[#990000] rounded-xl w-full aspect-square overflow-hidden flex items-center justify-center shadow-2xl transition-all hover:scale-105">
-                <Image src={`${gallery_prefix}_${i + 1}.jpg`} alt={`gallery-${i + 1}`} width="100%" height="100%" style={{ objectFit: "cover" }} />
+              <div className="w-full shadow-lg">
+                <div className="border-2 border-[#990000] rounded-xl w-full aspect-square overflow-hidden flex items-center justify-center transition-all hover:scale-105">
+                  <Image src={`${gallery_prefix}_${i + 1}.jpg`} alt={`gallery-${i + 1}`} width="100%" height="100%" style={{ objectFit: "cover" }} />
+                </div>
               </div>
             </AnimatedSection>
           ))}
         </div>
+        <WeddingGift />
       </div>
     </>
   );

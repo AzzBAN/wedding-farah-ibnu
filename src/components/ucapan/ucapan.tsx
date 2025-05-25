@@ -88,7 +88,15 @@ export default function Ucapan() {
   ];
   return (
     <>
-      <div className="flex justify-center bg-[#990000] pt-10 pb-10 w-full px-10">
+      <div className="relative flex justify-center bg-[#990000] pt-10 pb-10 w-full px-10">
+        <div
+          className="absolute w-full h-full opacity-15 -mt-10 -mb-10"
+          style={{
+            backgroundImage: "url('/images/content/content-3/comment_background.png')",
+            backgroundSize: "cover",
+            backgroundRepeat: "repeat-y",
+          }}
+        ></div>
         <div className="relative flex flex-col gap-7 justify-center items-center max-w-[500px]">
           <span className="font-imperial-script text-[10vw] md:text-[7vw] lg:text-[5vw] text-[#f1d6ab] font-black text-shadow-[2px_2px_2px_rgba(0,0,0,0.5)]">Ucapan</span>
           <div className="grid grid-cols-3 w-full gap-7">
