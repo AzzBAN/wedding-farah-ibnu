@@ -193,7 +193,7 @@ export default function MainPage() {
             </div>
 
             {/* sub content #2 */}
-            <AnimatedSection>
+            <AnimatedSection className="w-full text-center">
               <span className="text-center text-[#990000] font-quicksand mt-10 text-[2.8vw] md:text-[1.5vw] lg:text-[1.2vw]">
                 Dengan memohon rahmat dan ridho Allah SWT kami mengundang Bapak/Ibu Saudara/i untuk menghadiri acara pernikahan putra-putri kami:
               </span>

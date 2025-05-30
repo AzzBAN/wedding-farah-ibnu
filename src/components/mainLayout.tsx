@@ -47,9 +47,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         <>
           <div className={`fixed z-100 h-screen w-screen bg-black/50`}>
             <div
-              className={`fixed flex flex-col justify-center items-center gap-5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-100 bg-[#F1D6AB] w-[500px] h-3/4 rounded-xl max-sm:w-3/4 ${
-                isModalOpen ? "animate-popin-modal" : "animate-popout-modal"
-              }`}
+              className={`fixed flex flex-col justify-center items-center gap-5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-100 bg-[#F1D6AB] w-[500px] h-3/4 rounded-xl max-sm:w-3/4 ${isModalOpen ? "animate-popin-modal" : "block"}`}
             >
               <button className="absolute top-2 right-2 hover:cursor-pointer" onClick={() => setIsModalOpen(!isModalOpen)}>
                 <div className=" flex items-center justify-center bg-[#990000] hover:bg-[#F1D6AB] border-1 border-[#990000] rounded-md p-2 text-[#F1D6AB] hover:text-[#990000] text-[3vw] md:text-[2vw] lg:text-[1.5vw] font-quicksand font-bold transition-colors duration-100">

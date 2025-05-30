@@ -1,91 +1,107 @@
-import { Button, ConfigProvider, Form, FormProps, Input, List, Select } from "antd";
-import { useState } from "react";
+import { createComments, fetchComments } from "@/api/comment/comment_api";
+import { Button, ConfigProvider, Form, FormProps, Input, List, Pagination, Select } from "antd";
+import { useEffect, useState } from "react";
 
 type FieldType = {
-  name?: string;
-  ucapan?: string;
-  confirmation?: string;
+  name: string;
+  comment: string;
+  confirmation: string;
 };
 
-const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
+const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
+  const res = await createComments(values.name, values.comment, values.confirmation);
+  console.log("Success:", res);
   console.log("Success:", values);
 };
 
 const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
   console.log("Failed:", errorInfo);
 };
-const { Option } = Select;
+
 export default function Ucapan() {
   const [form] = Form.useForm();
   const [page, setPage] = useState(1);
+  const [comments, setComments] = useState<FieldType[]>([]);
+  const [totalComments, setTotalComments] = useState(0);
+  const pageSize = 5;
+  const fetchAndSetComments = async (page: number) => {
+    const offset = (page - 1) * pageSize;
+    const result = await fetchComments(pageSize, offset);
+    setTotalComments(result.data.total);
+    setComments(result.data.comments);
+  };
+
+  useEffect(() => {
+    fetchAndSetComments(page);
+  }, [page]);
 
   const onChangePage = (page: number, pageSize: number) => {
     setPage(page);
   };
 
-  const comments: { author: string; message: string; date: string }[] = [
-    {
-      author: "Tt Nova Richard",
-      message: "Congratulation to Raka n Nanda… Semoga berbahagia selalu.dan menjadi keluarga samawa…dan cepat dapat yunior yaaa….amiiin YRA….",
-      date: "3 bulan, 3 minggu lalu",
-    },
-    {
-      author: "ANC VWT",
-      message: "Congrats Nanda & Raka! Selamat menempuh hidup baru Barokah untuk Keluarga besar Achmad Bustani beserta besan.",
-      date: "4 bulan lalu",
-    },
-    {
-      author: "Subianto",
-      message:
-        "Selamat menempuh hidup baru Mas Raka. Semoga menjadi keluarga bahagia dan langgeng, serta cepat dapat momongan. Amiin, Selamat menempuh hidup baru Mas Raka. Semoga menjadi keluarga bahagia dan langgeng, serta cepat dapat momongan. Amiin, Selamat menempuh hidup baru Mas Raka. Semoga menjadi keluarga bahagia dan langgeng, serta cepat dapat momongan. Amiin",
-      date: "4 bulan lalu",
-    },
-    {
-      author: "Ujang",
-      message: "selamat menempuh hidup baruu nanda dan mas raka. semoga rumah tangga kalian selalu dilimpahi kebahagiaan, keberkahan, dan sakinah, mawaddah, warahmah sampai maut yang memisahkan. aamiin",
-      date: "4 bulan lalu",
-    },
-    {
-      author: "Tt Nova Richard",
-      message: "Congratulation to Raka n Nanda… Semoga berbahagia selalu.dan menjadi keluarga samawa…dan cepat dapat yunior yaaa….amiiin YRA….",
-      date: "3 bulan, 3 minggu lalu",
-    },
-    {
-      author: "ANC VWT",
-      message: "Congrats Nanda & Raka! Selamat menempuh hidup baru Barokah untuk Keluarga besar Achmad Bustani beserta besan.",
-      date: "4 bulan lalu",
-    },
-    {
-      author: "Subianto",
-      message: "Selamat menempuh hidup baru Mas Raka. Semoga menjadi keluarga bahagia dan langgeng, serta cepat dapat momongan. Amiin",
-      date: "4 bulan lalu",
-    },
-    {
-      author: "Ujang",
-      message: "selamat menempuh hidup baruu nanda dan mas raka. semoga rumah tangga kalian selalu dilimpahi kebahagiaan, keberkahan, dan sakinah, mawaddah, warahmah sampai maut yang memisahkan. aamiin",
-      date: "4 bulan lalu",
-    },
-    {
-      author: "Tt Nova Richard",
-      message: "Congratulation to Raka n Nanda… Semoga berbahagia selalu.dan menjadi keluarga samawa…dan cepat dapat yunior yaaa….amiiin YRA….",
-      date: "3 bulan, 3 minggu lalu",
-    },
-    {
-      author: "ANC VWT",
-      message: "Congrats Nanda & Raka! Selamat menempuh hidup baru Barokah untuk Keluarga besar Achmad Bustani beserta besan.",
-      date: "4 bulan lalu",
-    },
-    {
-      author: "Subianto",
-      message: "Selamat menempuh hidup baru Mas Raka. Semoga menjadi keluarga bahagia dan langgeng, serta cepat dapat momongan. Amiin",
-      date: "4 bulan lalu",
-    },
-    {
-      author: "Ujang",
-      message: "selamat menempuh hidup baruu nanda dan mas raka. semoga rumah tangga kalian selalu dilimpahi kebahagiaan, keberkahan, dan sakinah, mawaddah, warahmah sampai maut yang memisahkan. aamiin",
-      date: "4 bulan lalu",
-    },
-  ];
+  // const comments: { author: string; message: string; date: string }[] = [
+  //   {
+  //     author: "Tt Nova Richard",
+  //     message: "Congratulation to Raka n Nanda… Semoga berbahagia selalu.dan menjadi keluarga samawa…dan cepat dapat yunior yaaa….amiiin YRA….",
+  //     date: "3 bulan, 3 minggu lalu",
+  //   },
+  //   {
+  //     author: "ANC VWT",
+  //     message: "Congrats Nanda & Raka! Selamat menempuh hidup baru Barokah untuk Keluarga besar Achmad Bustani beserta besan.",
+  //     date: "4 bulan lalu",
+  //   },
+  //   {
+  //     author: "Subianto",
+  //     message:
+  //       "Selamat menempuh hidup baru Mas Raka. Semoga menjadi keluarga bahagia dan langgeng, serta cepat dapat momongan. Amiin, Selamat menempuh hidup baru Mas Raka. Semoga menjadi keluarga bahagia dan langgeng, serta cepat dapat momongan. Amiin, Selamat menempuh hidup baru Mas Raka. Semoga menjadi keluarga bahagia dan langgeng, serta cepat dapat momongan. Amiin",
+  //     date: "4 bulan lalu",
+  //   },
+  //   {
+  //     author: "Ujang",
+  //     message: "selamat menempuh hidup baruu nanda dan mas raka. semoga rumah tangga kalian selalu dilimpahi kebahagiaan, keberkahan, dan sakinah, mawaddah, warahmah sampai maut yang memisahkan. aamiin",
+  //     date: "4 bulan lalu",
+  //   },
+  //   {
+  //     author: "Tt Nova Richard",
+  //     message: "Congratulation to Raka n Nanda… Semoga berbahagia selalu.dan menjadi keluarga samawa…dan cepat dapat yunior yaaa….amiiin YRA….",
+  //     date: "3 bulan, 3 minggu lalu",
+  //   },
+  //   {
+  //     author: "ANC VWT",
+  //     message: "Congrats Nanda & Raka! Selamat menempuh hidup baru Barokah untuk Keluarga besar Achmad Bustani beserta besan.",
+  //     date: "4 bulan lalu",
+  //   },
+  //   {
+  //     author: "Subianto",
+  //     message: "Selamat menempuh hidup baru Mas Raka. Semoga menjadi keluarga bahagia dan langgeng, serta cepat dapat momongan. Amiin",
+  //     date: "4 bulan lalu",
+  //   },
+  //   {
+  //     author: "Ujang",
+  //     message: "selamat menempuh hidup baruu nanda dan mas raka. semoga rumah tangga kalian selalu dilimpahi kebahagiaan, keberkahan, dan sakinah, mawaddah, warahmah sampai maut yang memisahkan. aamiin",
+  //     date: "4 bulan lalu",
+  //   },
+  //   {
+  //     author: "Tt Nova Richard",
+  //     message: "Congratulation to Raka n Nanda… Semoga berbahagia selalu.dan menjadi keluarga samawa…dan cepat dapat yunior yaaa….amiiin YRA….",
+  //     date: "3 bulan, 3 minggu lalu",
+  //   },
+  //   {
+  //     author: "ANC VWT",
+  //     message: "Congrats Nanda & Raka! Selamat menempuh hidup baru Barokah untuk Keluarga besar Achmad Bustani beserta besan.",
+  //     date: "4 bulan lalu",
+  //   },
+  //   {
+  //     author: "Subianto",
+  //     message: "Selamat menempuh hidup baru Mas Raka. Semoga menjadi keluarga bahagia dan langgeng, serta cepat dapat momongan. Amiin",
+  //     date: "4 bulan lalu",
+  //   },
+  //   {
+  //     author: "Ujang",
+  //     message: "selamat menempuh hidup baruu nanda dan mas raka. semoga rumah tangga kalian selalu dilimpahi kebahagiaan, keberkahan, dan sakinah, mawaddah, warahmah sampai maut yang memisahkan. aamiin",
+  //     date: "4 bulan lalu",
+  //   },
+  // ];
   return (
     <>
       <div className="relative flex justify-center bg-[#990000] pt-10 pb-10 w-full px-10">
@@ -119,7 +135,7 @@ export default function Ucapan() {
                 <Input placeholder="Nama" />
               </Form.Item>
 
-              <Form.Item<FieldType> name="ucapan" rules={[{ required: true, message: "Ucapan is required" }]}>
+              <Form.Item<FieldType> name="comment" rules={[{ required: true, message: "Ucapan is required" }]}>
                 <Input.TextArea rows={4} placeholder="Ucapan" />
               </Form.Item>
 
@@ -142,32 +158,16 @@ export default function Ucapan() {
                 </ConfigProvider>
               </Form.Item>
             </Form>
-            {/* <div id="comments" className="w-full">
-              <List
-                pagination={{ position: "bottom", align: "center", pageSize: 5 }}
-                itemLayout="horizontal"
-                dataSource={comments}
-                className="max-h-[300px] overflow-y-scroll"
-                renderItem={(item, index) => {
-                  return (
-                    <div className={`flex flex-col px-3 py-2 rounded-2xl mb-3 bg-white text-black rounded-bl-sm`}>
-                      <span className="font-semibold text-sm mb-1">{item.author}</span>
-                      <span className="text-sm">{item.message}</span>
-                    </div>
-                  );
-                }}
-              />
-            </div> */}
             <div id="comments" className="w-full flex flex-col h-[500px]">
               {/* Scrollable Comment List */}
               <div className="flex-1 overflow-y-scroll px-2">
                 <List
                   itemLayout="horizontal"
-                  dataSource={comments.slice((page - 1) * 5, page * 5)}
+                  dataSource={comments}
                   renderItem={(item, index) => (
                     <div className="flex flex-col px-3 py-2 rounded-2xl mb-3 bg-white text-black rounded-bl-sm">
-                      <span className="font-semibold text-sm mb-1">{item.author}</span>
-                      <span className="text-sm">{item.message}</span>
+                      <span className="font-semibold text-sm mb-1">{item.name}</span>
+                      <span className="text-sm">{item.comment}</span>
                     </div>
                   )}
                 />
@@ -176,11 +176,7 @@ export default function Ucapan() {
               {/* Fixed Pagination at Bottom */}
               <div>
                 <ConfigProvider theme={{ token: { colorText: "#f1d6ab", colorBgContainer: "#C61B1B", colorPrimary: "#f1d6ab" }, components: { Pagination: { colorTextDisabled: "#990000" } } }}>
-                  <List
-                    pagination={{ position: "bottom", align: "center", pageSize: 5, onChange: onChangePage }}
-                    dataSource={comments}
-                    renderItem={() => null} // fake render to just show pagination bar
-                  />
+                  <Pagination current={page} align="center" onChange={onChangePage} total={totalComments} pageSize={pageSize} showSizeChanger={false} style={{ textAlign: "center", padding: "12px 0" }} />
                 </ConfigProvider>
               </div>
             </div>
