@@ -31,8 +31,8 @@ jobs:
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
           nvm use v22.13.1
 
-          PNPM_PATH="/home/darkpips/.nvm/versions/node/v22.13.1/bin/pnpm"
-          PM2_PATH="/home/darkpips/.nvm/versions/node/v22.13.1/bin/pm2"
+          PNPM_PATH="/home/azzban/.nvm/versions/node/v22.13.1/bin/pnpm"
+          PM2_PATH="/home/azzban/.nvm/versions/node/v22.13.1/bin/pm2"
 
           $PNPM_PATH install --frozen-lockfile
           $PNPM_PATH run build
