@@ -31,12 +31,9 @@ jobs:
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
           nvm use v22.13.1
 
-          PNPM_PATH="/home/AzzBAN/.nvm/versions/node/v22.13.1/bin/pnpm"
-          PM2_PATH="/home/AzzBAN/.nvm/versions/node/v22.13.1/bin/pm2"
-
-          $PNPM_PATH install --frozen-lockfile
-          $PNPM_PATH run build
-          $PM2_PATH restart pm2.json
+          npm install --frozen-lockfile
+          npm run build
+          pm2 restart pm2.json
 
           echo "✅ Deployment complete!"
           EOF
