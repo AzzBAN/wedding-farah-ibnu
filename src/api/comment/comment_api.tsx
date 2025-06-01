@@ -1,3 +1,4 @@
+import { host } from "../conf";
 async function fetchComments(limit?: string | number, offset?: string | number) {
   try {
     const body = {
@@ -5,7 +6,7 @@ async function fetchComments(limit?: string | number, offset?: string | number) 
       offset,
     };
 
-    const response = await fetch("http://127.0.0.1:1323/getcomment", {
+    const response = await fetch(`${host}/getcomment`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +34,7 @@ async function createComments(name: string, comment: string, confirmation: strin
       confirmation,
     };
 
-    const response = await fetch("http://127.0.0.1:1323/comment", {
+    const response = await fetch(`${host}/comment`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +56,7 @@ async function createComments(name: string, comment: string, confirmation: strin
 
 async function getConfirmationCount() {
   try {
-    const response = await fetch(`http://127.0.0.1:1323/getconfirmation`, {
+    const response = await fetch(`${host}/getconfirmation`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
