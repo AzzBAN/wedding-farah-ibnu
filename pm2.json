@@ -2,7 +2,7 @@
   "apps": [
     {
       "name": "Wedding-fani-ibnu",
-      "script": "next start"
+      "script": "npm run start"
     }
   ]
 }
