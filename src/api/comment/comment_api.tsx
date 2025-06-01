@@ -53,4 +53,25 @@ async function createComments(name: string, comment: string, confirmation: strin
   }
 }
 
-export { fetchComments, createComments };
+async function getConfirmationCount() {
+  try {
+    const response = await fetch(`http://127.0.0.1:1323/getconfirmation`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return error;
+  }
+}
+
+export { fetchComments, createComments, getConfirmationCount };

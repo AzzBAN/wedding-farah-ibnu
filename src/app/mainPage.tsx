@@ -205,7 +205,7 @@ export default function MainPage() {
                 </div>
                 <div className="absolute top-0 w-[50vw] md:w-[30vw] lg:w-[25vw] xl:w-[20vw] aspect-square ">
                   <div className="absolute bottom-0 -right-2 -rotate-30">
-                    <span className="text-[10vw] md:text-[2vw] lg:text-[1.5vw] font-birthstone leading-none text-[#d82525] font-black ">Fani</span>
+                    <span className="text-[10vw] md:text-[7vw] lg:text-[5vw] font-birthstone leading-none text-[#d82525] font-black ">Fani</span>
                   </div>
                 </div>
                 <div id="biodata-description" className="text-center">
@@ -222,7 +222,7 @@ export default function MainPage() {
                 </div>
                 <div className="absolute top-0 w-[50vw] md:w-[30vw] lg:w-[25vw] xl:w-[20vw] aspect-square ">
                   <div className="absolute bottom-0 -left-2 rotate-15">
-                    <span className="text-[10vw] md:text-[2vw] lg:text-[1.5vw] font-birthstone leading-none text-[#eeca7e] font-black text-shadow-[3px_2px_2px_rgba(1,1,1,0.8)]">Ibnu</span>
+                    <span className="text-[10vw] md:text-[7vw] lg:text-[5vw] font-birthstone leading-none text-[#d82525] font-black ">Ibnu</span>
                   </div>
                 </div>
                 <div id="biodata-description" className="text-center">
@@ -263,8 +263,8 @@ export default function MainPage() {
                 </div>
               ))}
             </div>
-            <div className="w-[40%] min-w-[300px] flex items-center justify-center bg-[#990000]/80 rounded-full py-2 px-5 text-[#F1D6AB] text-[3vw] md:text-[2vw] lg:text-[1.5vw] font-quicksand font-bold">
-              <a href="https://maps.app.goo.gl/fohEdam8PJ9dRDgw8" target="_blank">
+            <div className="w-[40%] min-w-[300px]  flex items-center justify-center bg-[#990000]/80 rounded-full py-2 px-5 text-[#F1D6AB] text-[3vw] md:text-[2vw] lg:text-[1.5vw] font-quicksand font-bold hover:cursor-pointer hover:bg-[#990000]/50 hover:text-[#990000] transition-all">
+              <a href="https://calendar.app.google/hB8WJTCGJooatWWs8" target="_blank">
                 Simpan Di Kalender
               </a>
             </div>
@@ -279,7 +279,10 @@ export default function MainPage() {
                   <span>08:00 - 10:00 WIB</span>
                 </div>
                 <div id="place" className="text-[3vw] md:text-[1.5vw] lg:text-[1vw]">
-                  <span>Legacy Hall, Aston Imperial Bekasi, Jl. KH. Noer Ali No.177, Kayuringin Jaya, Kec. Bekasi sel., Kota Bekasi, Jawa Barat 17144</span>
+                  <span>
+                    Legacy Hall, Aston Imperial Bekasi,
+                    <br /> Jl. KH. Noer Ali No.177, Kayuringin Jaya, Kec. Bekasi sel., Kota Bekasi, Jawa Barat 17144
+                  </span>
                 </div>
               </div>
               <div id="description_2" className="text-center">
@@ -290,10 +293,13 @@ export default function MainPage() {
                   <span>11:00 - 13:00 WIB</span>
                 </div>
                 <div id="place" className="text-[3vw] md:text-[1.5vw] lg:text-[1vw]">
-                  <span>Legacy Hall, Aston Imperial Bekasi, Jl. KH. Noer Ali No.177, Kayuringin Jaya, Kec. Bekasi sel., Kota Bekasi, Jawa Barat 17144</span>
+                  <span>
+                    Legacy Hall, Aston Imperial Bekasi,
+                    <br /> Jl. KH. Noer Ali No.177, Kayuringin Jaya, Kec. Bekasi sel., Kota Bekasi, Jawa Barat 17144
+                  </span>
                 </div>
               </div>
-              <div className="w-[80%] flex items-center justify-center bg-[#F1D6AB]/80 rounded-full py-2 px-5 text-[#990000] text-[3vw] md:text-[2vw] lg:text-[1.5vw] font-quicksand font-bold">
+              <div className="w-[80%] flex items-center justify-center hover:cursor-pointer bg-[#F1D6AB]/80 rounded-full py-2 px-5 text-[#990000] text-[3vw] md:text-[2vw] lg:text-[1.5vw] font-quicksand font-bold hover:bg-[#F1D6AB]/50 hover:text-[#F1D6AB] transition-all">
                 <a href="https://maps.app.goo.gl/fohEdam8PJ9dRDgw8" target="_blank">
                   Lihat Lokasi
                 </a>
