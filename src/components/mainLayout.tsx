@@ -6,8 +6,15 @@ import JumbotronV2 from "./jumbotron/jumbotronv2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMusic, faX, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
+  // const url = typeof window !== "undefined" ? window.location.href : "";
+  // console.log("Current URL:", url);
+  const searchParams = useSearchParams();
+  const to = searchParams.get("to");
+  const partner = searchParams.get("partner");
+  console.log("to:", to, "partner:", partner);
   const { isOpen } = useLayout();
   const { isModalOpen, setIsModalOpen } = useLayout();
   const [showTop, setShowTop] = useState(true);
@@ -109,7 +116,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         <div className={`min-h-dvh fixed overflow-hidden top-0 left-0 w-full h-full z-10 ${animate ? "animate-slide-up-fade" : "block"}`}>
           <div className="block w-full h-full overflow-hidden">
             {/* <Jumbotron isOpening={true} /> */}
-            <JumbotronV2 isOpening={true} />
+            <JumbotronV2 isOpening={true} to={to} partner={partner} />
           </div>
         </div>
       )}

@@ -3,8 +3,9 @@ import Image from "next/image";
 import { createContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Logo, Fani, And, Ibnu, Papan } from "../icon/jumbotron/Icons";
 import { useLayout } from "../LayoutContext";
+import { useParams } from "next/navigation";
 
-export default function JumbotronV2({ isOpening }: { isOpening?: boolean }) {
+export default function JumbotronV2({ isOpening, to, partner }: { isOpening?: boolean; to?: string | null; partner?: string | null }) {
   const { isOpen, setIsOpen } = useLayout();
   const [musicPlayed, setMusicPlayed] = useState(false);
 
@@ -68,7 +69,9 @@ export default function JumbotronV2({ isOpening }: { isOpening?: boolean }) {
               <div className="flex flex-col gap-7 justify-center items-center text-center">
                 <div className="flex flex-col gap-2">
                   <span className="font-birthstone text-5xl">Dear,</span>
-                  <span className="font-quicksand text-3xl font-bold text-[#b00303]">Alladin & Partner</span>
+                  <span className="font-quicksand text-3xl font-bold text-[#b00303]">
+                    {to ? to : "Guest"} & {partner ? partner : "Partner"}
+                  </span>
                 </div>
                 <span className="font-cormorant">You are cordially invited to our wedding celebration</span>
                 <div

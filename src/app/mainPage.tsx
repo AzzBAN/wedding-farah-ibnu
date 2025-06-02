@@ -8,9 +8,13 @@ import MainLayout from "@/components/mainLayout";
 import Ucapan from "@/components/ucapan/ucapan";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 export default function MainPage() {
+  const searchParams = useSearchParams();
+  const to = searchParams.get("to");
+  const partner = searchParams.get("partner");
   const headerRef = useRef<HTMLDivElement | null>(null);
   const [height, setHeight] = useState<number>(25);
 
@@ -146,7 +150,9 @@ export default function MainPage() {
                   </span>
                 </div>
                 <div className="w-full flex justify-center text-center animate-slide-up">
-                  <span className="text-2xl font-bold font-quicksand ">Aladin dan Partner</span>
+                  <span className="text-2xl font-bold font-quicksand ">
+                    {to ? to : "Guest"} & {partner ? partner : "Partner"}
+                  </span>
                 </div>
               </div>
             </div>
