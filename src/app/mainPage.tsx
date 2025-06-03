@@ -151,11 +151,13 @@ export default function MainPage() {
                 </div>
                 <div className="w-full flex justify-center text-center animate-slide-up">
                   <span className="text-2xl font-bold font-quicksand ">
-                    {to ? to : "Guest"} & {partner ? partner : "Partner"}
+                    {to ? to : "Guest"}
+                    {partner ? ` & ${partner}` : ""}
                   </span>
                 </div>
               </div>
             </div>
+            s
           </div>
         </div>
         {/* content #2 */}

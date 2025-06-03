@@ -70,7 +70,8 @@ export default function JumbotronV2({ isOpening, to, partner }: { isOpening?: bo
                 <div className="flex flex-col gap-2">
                   <span className="font-birthstone text-5xl">Dear,</span>
                   <span className="font-quicksand text-3xl font-bold text-[#b00303]">
-                    {to ? to : "Guest"} & {partner ? partner : "Partner"}
+                    {to ? to : "Guest"}
+                    {partner ? ` & ${partner}` : ""}
                   </span>
                 </div>
                 <span className="font-cormorant">You are cordially invited to our wedding celebration</span>
