@@ -283,7 +283,10 @@ export default function MainPage() {
                 <div id="title" className="text-[7vw] md:text-[3vw] lg:text-[2vw]">
                   <span>AKAD NIKAH</span>
                 </div>
-                <div id="time" className="text-[4vw] md:text-[2vw] lg:text-[1.5vw]">
+                {/* <div id="date" className="text-[4vw] md:text-[2vw] lg:text-[1.5vw] trailin"></div> */}
+                <div id="time" className="text-[4vw] md:text-[2vw] lg:text-[1.5vw] leading-7 mb-2">
+                  <span>28 June 2025</span>
+                  <br />
                   <span>08:00 - 10:00 WIB</span>
                 </div>
                 <div id="place" className="text-[3vw] md:text-[1.5vw] lg:text-[1vw]">
@@ -297,7 +300,9 @@ export default function MainPage() {
                 <div id="title" className="text-[7vw] md:text-[3vw] lg:text-[2vw]">
                   <span>RESEPSI</span>
                 </div>
-                <div id="time" className="text-[4vw] md:text-[2vw] lg:text-[1.5vw]">
+                <div id="time" className="text-[4vw] md:text-[2vw] lg:text-[1.5vw] leading-7 mb-2">
+                  <span>28 June 2025</span>
+                  <br />
                   <span>11:00 - 13:00 WIB</span>
                 </div>
                 <div id="place" className="text-[3vw] md:text-[1.5vw] lg:text-[1vw]">
