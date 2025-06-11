@@ -19,8 +19,8 @@ export default function AnimatedSection({ children, className, id, animation = "
     hidden_slide_left: { x: 20, opacity: 0 },
     hidden_slide_right: { x: -20, opacity: 0 },
     slide_up: { y: 0, opacity: 1, transition: { duration: 1.5, ease: "easeInOut" } },
-    slide_left: { x: 0, opacity: 1, transition: { duration: 1.5, ease: "linear" } },
-    slide_right: { x: 0, opacity: 1, transition: { duration: 1.5, ease: "linear" } },
+    slide_left: { x: 0, opacity: 1, transition: { duration: 1, ease: "linear" } },
+    slide_right: { x: 0, opacity: 1, transition: { duration: 1, ease: "linear" } },
   };
 
   return (
